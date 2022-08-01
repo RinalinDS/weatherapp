@@ -1,0 +1,54 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+h1 {
+    font-size: 1.6em;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.header button {
+    margin-left: auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+    text-decoration: none;
+}
+
+.buttonContainer {
+    margin-top: 10px;
+}
+
+.button {
+    box-sizing: border-box;
+    align-items: center;
+    background: linear-gradient(270.32deg, rgba(0, 226, 255, 0.62) -4.89%, rgba(0, 142, 238, 0.62) 85.28%), #008EEE;
+    border: 2px solid #149589;
+    color: white;
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 10px;
+    font-family: Poppins, sans-serif;
+    font-style: normal;
+    line-height: 27px;
+    font-weight: 600;
+    font-size: 18px;
+    width: 100%;
+}
+
+.button:hover {
+    background: linear-gradient(270.32deg, rgba(0, 142, 238, 0.62) -4.89%, rgba(0, 226, 255, 0.62) 104.98%), #008EEE;
+}
