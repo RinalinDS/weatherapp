@@ -8,3 +8,11 @@ export type ThunkReturnType = {
   forecast: CityWeatherType;
   city: string;
 };
+
+export type CountryStateType = {
+  flags: {
+    png: string
+    svg: string
+  }
+  name: string
+}
