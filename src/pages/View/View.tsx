@@ -1,45 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 import styles from './View.module.css';
 
 import { useAppSelector } from 'hooks/useAppHooks';
-import { CityWeatherType } from 'types/APIWeatherType';
-import { CountryStateType } from 'types/StateTypes';
+import { ForecastType } from 'types/StateTypes';
 import { getTime } from 'utils/getTime';
 
 export const View = () => {
   const { city } = useParams();
-  const forecast = useAppSelector<CityWeatherType>(
-    state => state.weather.forecast[city!],
-  );
-  const [country, setCountry] = useState<CountryStateType>({} as CountryStateType);
+  const forecast = useAppSelector<ForecastType>(state => state.weather.forecast[city!]);
   const [sunsetTime, sunriseTime] = getTime(
-    forecast?.sys?.sunset,
-    forecast?.sys?.sunrise,
+    forecast?.forecast?.sys?.sunset,
+    forecast?.forecast?.sys?.sunrise,
   );
   const weatherIcon =
-    `http://openweathermap.org/img/wn/${forecast?.weather[0]?.icon}@2x.png` || '';
-
-  useEffect(() => {
-    const code = forecast?.sys?.country;
-
-    if (code) {
-      axios
-        .get(`https://restcountries.com/v2/alpha/${code}?fields=flags,name`)
-        .then(({ data }) => setCountry(data));
-    }
-  }, [forecast?.sys?.country]);
+    `http://openweathermap.org/img/wn/${forecast?.forecast.weather[0]?.icon}@2x.png` ||
+    '';
 
   return (
     <div>
       <div className={styles.container}>
         <h2>
-          {city} , {country ? country.name : ''} ,{' '}
+          {city} , {forecast?.meta?.name ? forecast?.meta?.name : ''} ,{' '}
           <img
-            src={country?.flags?.svg}
+            src={forecast?.meta?.flags?.svg}
             style={{
               width: '40px',
               height: '20px',
@@ -54,23 +40,23 @@ export const View = () => {
           <ul>
             <li>
               Temperature:
-              {forecast?.main?.temp} °C
+              {forecast?.forecast?.main?.temp} °C
             </li>
             <li>
               Feels like:
-              {forecast?.main?.feels_like} °C
+              {forecast?.forecast?.main?.feels_like} °C
             </li>
             <li>
               Wind speed:
-              {forecast?.wind?.speed} m/s
+              {forecast?.forecast?.wind?.speed} m/s
             </li>
             <li>
               Pressure:
-              {forecast?.main?.pressure} mm
+              {forecast?.forecast?.main?.pressure} mm
             </li>
             <li>
               Humidity:
-              {forecast?.main?.humidity}%
+              {forecast?.forecast?.main?.humidity}%
             </li>
             <li>
               Sunset:

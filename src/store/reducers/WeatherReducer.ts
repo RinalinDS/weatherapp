@@ -2,8 +2,8 @@ import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { setAppStatus } from './AppReducer';
 
-import { weatherAPI } from 'api/API';
-import { ForecastStateType, ThunkReturnType } from 'types/StateTypes';
+import { countryAPI, weatherAPI } from 'api/API';
+import { ForecastStateType, ForecastType, ThunkReturnType } from 'types/StateTypes';
 import { RejectValueType } from 'types/UtilTypes';
 import { handleAsyncServerNetworkError } from 'utils/error-utils';
 
@@ -18,9 +18,11 @@ export const requestCurrentWeather = createAsyncThunk<
     dispatch(setAppStatus({ status: 'loading' }));
     const { data } = await weatherAPI.getCurrentWeatherInCity(city);
 
+    const { data: meta } = await countryAPI.getCountryInfoByCity(data?.sys?.country);
+
     dispatch(addNewCity(city));
 
-    return { forecast: data, city };
+    return { forecast: data, city, meta };
   } catch (e) {
     return handleAsyncServerNetworkError((e as Error).message, thunkAPI);
   } finally {
@@ -53,7 +55,9 @@ const slice = createSlice({
   },
   extraReducers: builder => {
     builder.addCase(requestCurrentWeather.fulfilled, (state, action) => {
-      state.forecast[action.payload.city] = action.payload.forecast;
+      state.forecast[action.payload.city] = {} as ForecastType;
+      state.forecast[action.payload.city].forecast = action.payload.forecast;
+      state.forecast[action.payload.city].meta = action.payload.meta;
     });
   },
 });

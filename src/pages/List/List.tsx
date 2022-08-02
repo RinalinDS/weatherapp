@@ -19,7 +19,7 @@ export const List: FC = () => {
     (city: string) => {
       const cityWithUpperCase = city
         .split(' ')
-        .map(m => m.charAt(0).toUpperCase() + m.slice(1))
+        .map(m => m.charAt(0).toUpperCase() + m.slice(1).toLowerCase())
         .join(' ');
 
       dispatch(requestCurrentWeather(cityWithUpperCase));
@@ -35,9 +35,7 @@ export const List: FC = () => {
 
   return (
     <>
-      <Grid container style={{ padding: '20px' }}>
-        <AddItemForm callBack={addNewCityHandler} />
-      </Grid>
+      <AddItemForm callBack={addNewCityHandler} />
       <div className={styles.cityContainer}>
         {cities.map(cityName => (
           <Grid key={cityName} item>

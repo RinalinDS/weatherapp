@@ -3,6 +3,8 @@ import React, { ChangeEvent, FC, KeyboardEvent, memo, useState } from 'react';
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import { IconButton, TextField } from '@mui/material';
 
+import styles from './AddItemForm.module.css';
+
 type AddItemFormPropsType = {
   callBack: (title: string) => void;
   disabled?: boolean;
@@ -33,18 +35,17 @@ export const AddItemForm: FC<AddItemFormPropsType> = memo(({ callBack, disabled 
   };
 
   return (
-    <div style={{ display: 'flex' }}>
+    <div className={styles.container}>
       <TextField
         variant="outlined"
         value={newCityTitle}
         onChange={onSetNewTitleHandler}
         onKeyPress={onEnterKeyPressHandler}
         error={!!error}
-        label="Title"
+        label="City name"
         helperText={error}
         disabled={disabled}
         style={{ backgroundColor: 'white' }}
-        placeholder="Enter City name"
       />
       <IconButton
         color="primary"

@@ -88,6 +88,13 @@ test('forecast for city should be added', () => {
       {
         forecast: odessaForecast,
         city,
+        meta: {
+          name: 'Ukraine',
+          flags: {
+            svg: 'https://flagcdn.com/ua.svg',
+            png: 'https://flagcdn.com/w320/ua.png',
+          },
+        },
       },
       '',
       city,
@@ -96,5 +103,5 @@ test('forecast for city should be added', () => {
 
   expect(endState.forecast[city]).toBeDefined();
   // eslint-disable-next-line no-magic-numbers
-  expect(endState.forecast[city].id).toBe(698740);
+  expect(endState.forecast[city].forecast.id).toBe(698740);
 });

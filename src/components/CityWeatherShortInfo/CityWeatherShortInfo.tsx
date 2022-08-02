@@ -1,18 +1,18 @@
 import React, { FC, memo, SyntheticEvent } from 'react';
 
 import { Delete } from '@mui/icons-material';
-import { IconButton } from '@mui/material';
+import { Button, IconButton, Paper } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
 import styles from './CityWeatherShortInfo.module.css';
 
 import { useAppDispatch } from 'hooks/useAppHooks';
 import { requestCurrentWeather } from 'store/reducers/WeatherReducer';
-import { CityWeatherType } from 'types/APIWeatherType';
+import { ForecastType } from 'types/StateTypes';
 
 type CityWeatherShortInfoPropsType = {
   city: string;
-  forecastForCity: CityWeatherType;
+  forecastForCity: ForecastType;
   callback: (city: string) => void;
 };
 
@@ -30,7 +30,15 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
     return (
       <>
         <NavLink to={`/${city}`}>
-          <div className={styles.container}>
+          <Paper
+            variant="outlined"
+            style={{
+              backgroundColor: 'aliceblue',
+              borderRadius: '10px',
+              boxSizing: 'border-box',
+              padding: '1rem',
+            }}
+          >
             <div className={styles.header}>
               <h1>{city}</h1>
               <IconButton
@@ -45,27 +53,27 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
             <ul>
               <li>
                 Temperature:
-                {forecastForCity?.main?.temp} °C
+                {forecastForCity?.forecast?.main?.temp} °C
               </li>
               <li>
                 Feels like:
-                {forecastForCity?.main?.feels_like} °C
+                {forecastForCity?.forecast.main?.feels_like} °C
               </li>
               <li>
                 Wind speed:
-                {forecastForCity?.wind?.speed} mp/h
+                {forecastForCity?.forecast.wind?.speed} mp/h
               </li>
               <li>
                 Pressure:
-                {forecastForCity?.main?.pressure} mm
+                {forecastForCity?.forecast.main?.pressure} mm
               </li>
             </ul>
-          </div>
+          </Paper>
         </NavLink>
         <div className={styles.buttonContainer}>
-          <button type="submit" className={styles.button} onClick={updateCityWeather}>
+          <Button variant="contained" size="large" onClick={updateCityWeather}>
             Update
-          </button>
+          </Button>
         </div>
       </>
     );
