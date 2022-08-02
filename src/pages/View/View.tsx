@@ -24,14 +24,7 @@ export const View = () => {
       <div className={styles.container}>
         <h2>
           {city} , {forecast?.meta?.name ? forecast?.meta?.name : ''} ,{' '}
-          <img
-            src={forecast?.meta?.flags?.svg}
-            style={{
-              width: '40px',
-              height: '20px',
-            }}
-            alt="Country flag"
-          />
+          <img src={forecast?.meta?.flags?.svg} alt="Country flag" />
         </h2>
         <div>
           <img src={weatherIcon} alt="weather icon" />
