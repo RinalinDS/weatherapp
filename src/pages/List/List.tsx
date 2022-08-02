@@ -2,11 +2,11 @@ import React, { FC, useCallback } from "react";
 
 import { Grid } from "@mui/material";
 
-import styles from "./CitiesList.module.css";
+import styles from "pages/List/List.module.css";
 
 import { AddItemForm } from "components/AddItemForm/AddItemForm";
 import { useAppDispatch, useAppSelector } from "hooks/useAppHooks";
-import { CityWeatherShortInfo } from "pages/CitiesList/CityWeatherShortInfo/CityWeatherShortInfo";
+import { CityWeatherShortInfo } from "components/CityWeatherShortInfo/CityWeatherShortInfo";
 import {
   deleteCity,
   requestCurrentWeather,
@@ -14,7 +14,7 @@ import {
 import { selectCities, selectForecast } from "store/selectors/WeatherSelectors";
 import { ForecastStateType } from "types/StateTypes";
 
-export const CitiesList: FC = () => {
+export const List: FC = () => {
   const dispatch = useAppDispatch();
   const cities = useAppSelector<string[]>(selectCities);
   const forecast = useAppSelector<ForecastStateType>(selectForecast);

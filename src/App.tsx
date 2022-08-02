@@ -8,8 +8,8 @@ import styles from "./App.module.css";
 import {ErrorSnackbar} from "components/Snackbar/SnackbarError";
 import {Path} from "enum/Path";
 import {useAppDispatch, useAppSelector} from "hooks/useAppHooks";
-import {CitiesList} from "pages/CitiesList/CitiesList";
-import {ViewCity} from "pages/ViewCity/ViewCity";
+import {List} from "pages/List/List";
+import {View} from "pages/View/View";
 import {getCities, requestCurrentWeather,} from "store/reducers/WeatherReducer";
 import {selectStatus} from "store/selectors/AppSelectors";
 import {RequestStatusType} from "types/AppTypes";
@@ -41,8 +41,8 @@ export const App: FC = () => {
       {status === "loading" && <LinearProgress color="secondary"/>}
       <div className={styles.container}>
         <Routes>
-          <Route path={Path.Home} element={<CitiesList/>}/>
-          <Route path={Path.City} element={<ViewCity/>}/>
+          <Route path={Path.Home} element={<List/>}/>
+          <Route path={Path.City} element={<View/>}/>
           <Route
             path={Path.ErrorPage}
             element={<h1>Someone made a mistake</h1>}

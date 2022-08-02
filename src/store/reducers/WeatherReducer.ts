@@ -16,11 +16,11 @@ export const requestCurrentWeather = createAsyncThunk<
 
   try {
     dispatch(setAppStatus({ status: "loading" }));
-    const res = await weatherAPI.getCurrentWeatherInCity(city);
+    const {data} = await weatherAPI.getCurrentWeatherInCity(city);
 
     dispatch(addNewCity(city));
 
-    return { forecast: res.data, city };
+    return { forecast: data, city };
   } catch (e) {
     return handleAsyncServerNetworkError((e as Error).message, thunkAPI);
   } finally {

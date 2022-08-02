@@ -47,6 +47,7 @@ export const AddItemForm: FC<AddItemFormPropsType> = memo(
           helperText={error}
           disabled={disabled}
           style={{ backgroundColor: "white" }}
+          placeholder={'Enter City name'}
         />
         <IconButton
           color="primary"
