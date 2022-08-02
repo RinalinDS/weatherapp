@@ -51,22 +51,10 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
               </IconButton>
             </div>
             <ul>
-              <li>
-                Temperature:
-                {forecastForCity?.forecast?.main?.temp} °C
-              </li>
-              <li>
-                Feels like:
-                {forecastForCity?.forecast.main?.feels_like} °C
-              </li>
-              <li>
-                Wind speed:
-                {forecastForCity?.forecast.wind?.speed} mp/h
-              </li>
-              <li>
-                Pressure:
-                {forecastForCity?.forecast.main?.pressure} mm
-              </li>
+              <li>Temperature: {forecastForCity?.forecast?.main?.temp}°C</li>
+              <li>Feels like: {forecastForCity?.forecast.main?.feels_like}°C</li>
+              <li>Wind speed: {forecastForCity?.forecast.wind?.speed} m/s</li>
+              <li>Pressure: {forecastForCity?.forecast.main?.pressure} mm</li>
             </ul>
           </Paper>
         </NavLink>

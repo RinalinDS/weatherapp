@@ -15,15 +15,15 @@ export const View = () => {
     forecast?.forecast?.sys?.sunset,
     forecast?.forecast?.sys?.sunrise,
   );
-  const weatherIcon =
-    `http://openweathermap.org/img/wn/${forecast?.forecast.weather[0]?.icon}@2x.png` ||
-    '';
+  const weatherIcon = forecast?.forecast.weather[0]?.icon
+    ? `http://openweathermap.org/img/wn/${forecast?.forecast.weather[0]?.icon}@2x.png`
+    : '';
 
   return (
     <div>
       <div className={styles.container}>
         <h2>
-          {city} , {forecast?.meta?.name ? forecast?.meta?.name : ''} ,{' '}
+          {city}, {forecast?.meta?.name ? forecast?.meta?.name : ''},{' '}
           <img src={forecast?.meta?.flags?.svg} alt="Country flag" />
         </h2>
         <div>
@@ -31,34 +31,13 @@ export const View = () => {
         </div>
         <div>
           <ul>
-            <li>
-              Temperature:
-              {forecast?.forecast?.main?.temp} °C
-            </li>
-            <li>
-              Feels like:
-              {forecast?.forecast?.main?.feels_like} °C
-            </li>
-            <li>
-              Wind speed:
-              {forecast?.forecast?.wind?.speed} m/s
-            </li>
-            <li>
-              Pressure:
-              {forecast?.forecast?.main?.pressure} mm
-            </li>
-            <li>
-              Humidity:
-              {forecast?.forecast?.main?.humidity}%
-            </li>
-            <li>
-              Sunset:
-              {sunsetTime || ''}
-            </li>
-            <li>
-              Sunrise:
-              {sunriseTime || ''}
-            </li>
+            <li>Temperature: {forecast?.forecast?.main?.temp}°C</li>
+            <li>Feels like: {forecast?.forecast?.main?.feels_like} °C</li>
+            <li>Wind speed: {forecast?.forecast?.wind?.speed} m/s</li>
+            <li>Pressure: {forecast?.forecast?.main?.pressure} mm</li>
+            <li>Humidity: {forecast?.forecast?.main?.humidity}%</li>
+            <li>Sunset: {sunsetTime || ''}</li>
+            <li>Sunrise: {sunriseTime || ''}</li>
           </ul>
         </div>
       </div>
