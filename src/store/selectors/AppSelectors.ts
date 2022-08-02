@@ -1,6 +1,6 @@
-import { AppRootStateType } from "../store";
+import { AppRootStateType } from '../store';
 
-import { NullableType, RequestStatusType } from "types/AppTypes";
+import { NullableType, RequestStatusType } from 'types/AppTypes';
 
 export const selectStatus = (state: AppRootStateType): RequestStatusType =>
   state.app.status;

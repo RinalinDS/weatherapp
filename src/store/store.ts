@@ -1,8 +1,8 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import thunkMiddleware from "redux-thunk";
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import thunkMiddleware from 'redux-thunk';
 
-import { appReducer } from "./reducers/AppReducer";
-import { weatherReducer } from "./reducers/WeatherReducer";
+import { appReducer } from './reducers/AppReducer';
+import { weatherReducer } from './reducers/WeatherReducer';
 
 const rootReducer = combineReducers({
   weather: weatherReducer,
@@ -10,16 +10,12 @@ const rootReducer = combineReducers({
 });
 
 export const store = configureStore({
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(thunkMiddleware),
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(thunkMiddleware),
   reducer: rootReducer,
 });
 
 store.subscribe(() => {
-  localStorage.setItem(
-    "cityList",
-    JSON.stringify(store.getState().weather.cities)
-  );
+  localStorage.setItem('cityList', JSON.stringify(store.getState().weather.cities));
 });
 
 export type AppRootStateType = ReturnType<typeof rootReducer>;

@@ -1,18 +1,14 @@
-import React, { FC, useCallback } from "react";
+import React, { FC, useCallback } from 'react';
 
-import { Grid } from "@mui/material";
+import { Grid } from '@mui/material';
 
-import styles from "pages/List/List.module.css";
-
-import { AddItemForm } from "components/AddItemForm/AddItemForm";
-import { useAppDispatch, useAppSelector } from "hooks/useAppHooks";
-import { CityWeatherShortInfo } from "components/CityWeatherShortInfo/CityWeatherShortInfo";
-import {
-  deleteCity,
-  requestCurrentWeather,
-} from "store/reducers/WeatherReducer";
-import { selectCities, selectForecast } from "store/selectors/WeatherSelectors";
-import { ForecastStateType } from "types/StateTypes";
+import { AddItemForm } from 'components/AddItemForm/AddItemForm';
+import { CityWeatherShortInfo } from 'components/CityWeatherShortInfo/CityWeatherShortInfo';
+import { useAppDispatch, useAppSelector } from 'hooks/useAppHooks';
+import styles from 'pages/List/List.module.css';
+import { deleteCity, requestCurrentWeather } from 'store/reducers/WeatherReducer';
+import { selectCities, selectForecast } from 'store/selectors/WeatherSelectors';
+import { ForecastStateType } from 'types/StateTypes';
 
 export const List: FC = () => {
   const dispatch = useAppDispatch();
@@ -21,34 +17,39 @@ export const List: FC = () => {
 
   const addNewCityHandler = useCallback(
     (city: string) => {
-      const cityWithUpperCase = city.split(' ').map(m => m.charAt(0).toUpperCase() + m.slice(1)).join(' ')
+      const cityWithUpperCase = city
+        .split(' ')
+        .map(m => m.charAt(0).toUpperCase() + m.slice(1))
+        .join(' ');
+
       dispatch(requestCurrentWeather(cityWithUpperCase));
     },
-    [dispatch]
+    [dispatch],
   );
-  const deleteCityHandler = useCallback((city: string): void => {
-    dispatch(deleteCity(city));
-  },[dispatch])
+  const deleteCityHandler = useCallback(
+    (city: string): void => {
+      dispatch(deleteCity(city));
+    },
+    [dispatch],
+  );
 
   return (
     <>
-      <Grid container style={{ padding: "20px" }}>
+      <Grid container style={{ padding: '20px' }}>
         <AddItemForm callBack={addNewCityHandler} />
       </Grid>
       <div className={styles.cityContainer}>
-        {cities.map((cityName) => {
-          return (
-            <Grid key={cityName} item>
-              <div className={styles.cityInfo}>
-                <CityWeatherShortInfo
-                  city={cityName}
-                  forecastForCity={forecast[cityName]}
-                  callback={deleteCityHandler}
-                />
-              </div>
-            </Grid>
-          );
-        })}
+        {cities.map(cityName => (
+          <Grid key={cityName} item>
+            <div className={styles.cityInfo}>
+              <CityWeatherShortInfo
+                city={cityName}
+                forecastForCity={forecast[cityName]}
+                callback={deleteCityHandler}
+              />
+            </div>
+          </Grid>
+        ))}
       </div>
     </>
   );

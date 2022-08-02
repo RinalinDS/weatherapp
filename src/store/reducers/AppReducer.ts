@@ -1,11 +1,11 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { NullableType, RequestStatusType } from "types/AppTypes";
+import { NullableType, RequestStatusType } from 'types/AppTypes';
 
 const slice = createSlice({
-  name: "app",
+  name: 'app',
   initialState: {
-    status: "idle" as RequestStatusType,
+    status: 'idle' as RequestStatusType,
     error: null as NullableType<string>,
   },
   reducers: {
