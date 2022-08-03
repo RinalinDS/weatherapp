@@ -12,7 +12,8 @@ export type ForecastType = {
 export type ThunkReturnType = {
   forecast: CityWeatherType;
   city: string;
-  meta: CountryStateType;
+  meta?: CountryStateType;
+  initRequest?: boolean;
 };
 
 export type CountryStateType = {

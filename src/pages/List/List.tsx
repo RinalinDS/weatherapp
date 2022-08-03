@@ -22,7 +22,7 @@ export const List: FC = () => {
         .map(m => m.charAt(0).toUpperCase() + m.slice(1).toLowerCase())
         .join(' ');
 
-      dispatch(requestCurrentWeather(cityWithUpperCase));
+      dispatch(requestCurrentWeather({ city: cityWithUpperCase }));
     },
     [dispatch],
   );

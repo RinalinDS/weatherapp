@@ -24,7 +24,7 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
       callback(city);
     };
     const updateCityWeather = () => {
-      dispatch(requestCurrentWeather(city));
+      dispatch(requestCurrentWeather({ city, initRequest: false }));
     };
 
     return (

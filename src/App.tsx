@@ -27,7 +27,7 @@ export const App: FC = () => {
     const cities = getCitiesFromLocalStorage();
 
     dispatch(getCities(cities));
-    cities.forEach(m => dispatch(requestCurrentWeather(m)));
+    cities.forEach(m => dispatch(requestCurrentWeather({ city: m })));
   }, [dispatch]);
 
   return (

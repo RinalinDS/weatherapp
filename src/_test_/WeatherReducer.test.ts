@@ -95,9 +95,10 @@ test('forecast for city should be added', () => {
             png: 'https://flagcdn.com/w320/ua.png',
           },
         },
+        initRequest: true,
       },
       '',
-      city,
+      { city, initRequest: true },
     ),
   );
 

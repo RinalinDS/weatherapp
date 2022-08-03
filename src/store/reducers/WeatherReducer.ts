@@ -9,20 +9,24 @@ import { handleAsyncServerNetworkError } from 'utils/error-utils';
 
 export const requestCurrentWeather = createAsyncThunk<
   ThunkReturnType,
-  string,
+  { city: string; initRequest?: boolean },
   RejectValueType
->('weather/requestCurrentWeather', async (city, thunkAPI) => {
+>('weather/requestCurrentWeather', async ({ city, initRequest = true }, thunkAPI) => {
   const { dispatch } = thunkAPI;
 
   try {
     dispatch(setAppStatus({ status: 'loading' }));
     const { data } = await weatherAPI.getCurrentWeatherInCity(city);
 
-    const { data: meta } = await countryAPI.getCountryInfoByCity(data?.sys?.country);
+    if (initRequest) {
+      const { data: meta } = await countryAPI.getCountryInfoByCity(data?.sys?.country);
 
-    dispatch(addNewCity(city));
+      dispatch(addNewCity(city));
 
-    return { forecast: data, city, meta };
+      return { forecast: data, city, meta, initRequest };
+    }
+
+    return { forecast: data, city };
   } catch (e) {
     return handleAsyncServerNetworkError((e as Error).message, thunkAPI);
   } finally {
@@ -55,9 +59,13 @@ const slice = createSlice({
   },
   extraReducers: builder => {
     builder.addCase(requestCurrentWeather.fulfilled, (state, action) => {
-      state.forecast[action.payload.city] = {} as ForecastType;
-      state.forecast[action.payload.city].forecast = action.payload.forecast;
-      state.forecast[action.payload.city].meta = action.payload.meta;
+      if (action.payload.initRequest && action.payload.meta) {
+        state.forecast[action.payload.city] = {} as ForecastType;
+        state.forecast[action.payload.city].forecast = action.payload.forecast;
+        state.forecast[action.payload.city].meta = action.payload.meta;
+      } else {
+        state.forecast[action.payload.city].forecast = action.payload.forecast;
+      }
     });
   },
 });
