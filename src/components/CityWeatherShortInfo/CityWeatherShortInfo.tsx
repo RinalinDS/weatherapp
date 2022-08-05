@@ -50,7 +50,7 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
                 <Delete fontSize="small" />
               </IconButton>
             </div>
-            <ul>
+            <ul className={styles.list}>
               <li>Temperature: {forecastForCity?.forecast?.main?.temp}°C</li>
               <li>Feels like: {forecastForCity?.forecast.main?.feels_like}°C</li>
               <li>Wind speed: {forecastForCity?.forecast.wind?.speed} m/s</li>

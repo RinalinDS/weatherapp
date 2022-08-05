@@ -30,7 +30,7 @@ export const View = () => {
           <img src={weatherIcon} alt="weather icon" />
         </div>
         <div>
-          <ul>
+          <ul className={styles.list}>
             <li>Temperature: {forecast?.forecast?.main?.temp}°C</li>
             <li>Feels like: {forecast?.forecast?.main?.feels_like} °C</li>
             <li>Wind speed: {forecast?.forecast?.wind?.speed} m/s</li>
