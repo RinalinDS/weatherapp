@@ -31,13 +31,27 @@ export const View = () => {
         </div>
         <div>
           <ul className={styles.list}>
-            <li>Temperature: {forecast?.forecast?.main?.temp}°C</li>
-            <li>Feels like: {forecast?.forecast?.main?.feels_like} °C</li>
-            <li>Wind speed: {forecast?.forecast?.wind?.speed} m/s</li>
-            <li>Pressure: {forecast?.forecast?.main?.pressure} mm</li>
-            <li>Humidity: {forecast?.forecast?.main?.humidity}%</li>
-            <li>Sunset: {sunsetTime || ''}</li>
-            <li>Sunrise: {sunriseTime || ''}</li>
+            <li>
+              <b>Temperature:</b> {forecast?.forecast?.main?.temp}°C
+            </li>
+            <li>
+              <b>Feels like:</b> {forecast?.forecast?.main?.feels_like} °C
+            </li>
+            <li>
+              <b>Wind speed:</b> {forecast?.forecast?.wind?.speed} m/s
+            </li>
+            <li>
+              <b>Pressure:</b> {forecast?.forecast?.main?.pressure} mm
+            </li>
+            <li>
+              <b>Humidity:</b> {forecast?.forecast?.main?.humidity}%
+            </li>
+            <li>
+              <b>Sunset:</b> {sunsetTime || ''}
+            </li>
+            <li>
+              <b>Sunrise:</b> {sunriseTime || ''}
+            </li>
           </ul>
         </div>
       </div>
