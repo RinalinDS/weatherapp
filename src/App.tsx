@@ -10,25 +10,22 @@ import { Path } from 'enum/Path';
 import { useAppDispatch, useAppSelector } from 'hooks/useAppHooks';
 import { List } from 'pages/List/List';
 import { View } from 'pages/View/View';
-import { getCities, requestCurrentWeather } from 'store/reducers/WeatherReducer';
+import { requestCurrentWeather } from 'store/reducers/WeatherReducer';
 import { selectStatus } from 'store/selectors/AppSelectors';
 import { RequestStatusType } from 'types/AppTypes';
-import { getCitiesFromLocalStorage } from 'utils/getFromLocal';
 
 export const App: FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const status = useAppSelector<RequestStatusType>(selectStatus);
+  const cities = useAppSelector<string[]>(state => state.weather.cities);
   const backHomeHandler = (): void => {
     navigate(Path.Home);
   };
 
   useEffect(() => {
-    const cities = getCitiesFromLocalStorage();
-
-    dispatch(getCities(cities));
-    cities.forEach(m => dispatch(requestCurrentWeather({ city: m })));
-  }, [dispatch]);
+    cities.forEach(city => dispatch(requestCurrentWeather({ city })));
+  }, []);
 
   return (
     <div>

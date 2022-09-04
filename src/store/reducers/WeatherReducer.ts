@@ -47,9 +47,6 @@ const slice = createSlice({
       state.cities.splice(index, 1);
       delete state.forecast[action.payload];
     },
-    getCities: (state, action: PayloadAction<string[]>) => {
-      state.cities = action.payload;
-    },
     addNewCity: (state, action: PayloadAction<string>) => {
       if (state.cities.find(f => f === action.payload)) {
         return;
@@ -71,4 +68,4 @@ const slice = createSlice({
 });
 
 export const weatherReducer = slice.reducer;
-export const { getCities, deleteCity, addNewCity } = slice.actions;
+export const { deleteCity, addNewCity } = slice.actions;

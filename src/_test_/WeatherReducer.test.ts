@@ -1,7 +1,6 @@
 import {
   addNewCity,
   deleteCity,
-  getCities,
   requestCurrentWeather,
   weatherReducer,
 } from 'store/reducers/WeatherReducer';
@@ -37,17 +36,6 @@ test('correct city should be added', () => {
   expect(endState.cities[3]).toBe('Berlin');
 });
 
-test('cities should be added', () => {
-  const newCities = ['Mexico', 'Barcelona', 'Milan'];
-  const endState = weatherReducer(initialState, getCities(newCities));
-
-  // eslint-disable-next-line no-magic-numbers
-  expect(endState.cities.length).toBe(3);
-  expect(endState.cities[0]).toBe('Mexico');
-  // eslint-disable-next-line no-magic-numbers
-  expect(endState.cities[2]).toBe('Milan');
-});
-//
 test('forecast for city should be added', () => {
   const odessaForecast = {
     coord: { lon: 30.7326, lat: 46.4775 },
