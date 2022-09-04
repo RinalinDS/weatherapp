@@ -8,5 +8,14 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+.addItemForm {
+    display: flex;
+    justify-content: flex-start;
+}
 
-
+@media screen and (max-width: 768px) {
+    .addItemForm {
+        display: flex;
+        justify-content: center;
+    }
+}

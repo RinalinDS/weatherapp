@@ -40,19 +40,13 @@ export const AddItemForm: FC<AddItemFormPropsType> = memo(({ callBack, disabled 
         variant="outlined"
         value={newCityTitle}
         onChange={onSetNewTitleHandler}
-        onKeyPress={onEnterKeyPressHandler}
+        onKeyDown={onEnterKeyPressHandler}
         error={!!error}
         label="City name"
         helperText={error}
         disabled={disabled}
-        style={{ backgroundColor: 'white' }}
       />
-      <IconButton
-        color="primary"
-        onClick={addItem}
-        disabled={disabled}
-        style={{ marginLeft: '10px' }}
-      >
+      <IconButton color="primary" onClick={addItem} disabled={disabled}>
         <AddBoxIcon />
       </IconButton>
     </div>

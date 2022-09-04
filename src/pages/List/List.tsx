@@ -35,7 +35,9 @@ export const List: FC = () => {
 
   return (
     <>
-      <AddItemForm callBack={addNewCityHandler} />
+      <div className={styles.addItemForm}>
+        <AddItemForm callBack={addNewCityHandler} />
+      </div>
       <div className={styles.cityContainer}>
         {cities.map(cityName => (
           <Grid key={cityName} item>
