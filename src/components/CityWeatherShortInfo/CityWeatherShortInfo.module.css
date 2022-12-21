@@ -31,7 +31,13 @@ h1 {
     margin-top: 10px;
     display: flex;
     justify-content: center;
+}
 
+.modalButtonsContainer {
+    display: flex;
+    gap: 80px;
+    justify-content: center;
+    align-items: center;
 }
 
 .list {

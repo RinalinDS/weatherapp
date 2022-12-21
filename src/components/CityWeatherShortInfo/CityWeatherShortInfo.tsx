@@ -1,8 +1,10 @@
-import React, { FC, memo, SyntheticEvent } from 'react';
+import React, { FC, memo, SyntheticEvent, useState } from 'react';
 
 import { Delete } from '@mui/icons-material';
 import { Button, IconButton, Paper } from '@mui/material';
 import { NavLink } from 'react-router-dom';
+
+import { Modal } from '../Modal/Modal';
 
 import styles from './CityWeatherShortInfo.module.css';
 
@@ -19,8 +21,12 @@ type CityWeatherShortInfoPropsType = {
 export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
   ({ city, callback, forecastForCity }) => {
     const dispatch = useAppDispatch();
+    const [isModalActive, setModalActive] = useState<boolean>(false);
     const callbackHandler = (e: SyntheticEvent) => {
       e.preventDefault();
+      setModalActive(true);
+    };
+    const confirmDeleteHandler = () => {
       callback(city);
     };
     const updateCityWeather = () => {
@@ -71,6 +77,31 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
             Update
           </Button>
         </div>
+        {isModalActive && (
+          <Modal setVisible={setModalActive}>
+            <div className={styles.modalTitle}>
+              Are you sure you want to delete this city?
+            </div>
+            <div className={styles.modalButtonsContainer}>
+              <Button
+                color="primary"
+                variant="contained"
+                size="medium"
+                onClick={confirmDeleteHandler}
+              >
+                Delete
+              </Button>
+              <Button
+                color="secondary"
+                variant="contained"
+                size="medium"
+                onClick={() => setModalActive(false)}
+              >
+                Wait, NO!
+              </Button>
+            </div>
+          </Modal>
+        )}
       </>
     );
   },
