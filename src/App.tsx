@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 
 import { AppBar, Button, LinearProgress, Toolbar } from '@mui/material';
 import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
@@ -23,9 +23,19 @@ export const App: FC = () => {
     navigate(Path.Home);
   };
 
+  const [isLoading, setIsLoaded] = useState(true);
+
   useEffect(() => {
     cities.forEach(city => dispatch(requestCurrentWeather({ city })));
+    setIsLoaded(false);
   }, []);
+
+  if (isLoading)
+    return (
+      <h1 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        INITIAL LOADING....
+      </h1>
+    );
 
   return (
     <div>
