@@ -1,7 +1,7 @@
 import React, { FC, memo, SyntheticEvent, useState } from 'react';
 
 import { Delete } from '@mui/icons-material';
-import { Button, IconButton, Paper } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
 import { Modal } from '../Modal/Modal';
@@ -36,17 +36,9 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
     return (
       <>
         <NavLink to={`/${city}`}>
-          <Paper
-            variant="outlined"
-            style={{
-              backgroundColor: 'aliceblue',
-              borderRadius: '10px',
-              boxSizing: 'border-box',
-              padding: '1rem',
-            }}
-          >
+          <div className={styles.card}>
             <div className={styles.header}>
-              <h1>{city}</h1>
+              <h1 className={styles.cityTitle}>{city}</h1>
               <IconButton
                 size="medium"
                 onClick={e => {
@@ -70,7 +62,7 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
                 <b>Pressure:</b> {forecastForCity?.forecast.main?.pressure} mm
               </li>
             </ul>
-          </Paper>
+          </div>
         </NavLink>
         <div className={styles.buttonContainer}>
           <Button variant="contained" size="large" onClick={updateCityWeather}>

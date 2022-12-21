@@ -1,31 +1,37 @@
+.card {
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.10);
+    border-radius: 11px;
+    padding: 18px 36px;
+    transition: all 400ms;
+}
+
+.card:hover {
+    transform: translateY(-1rem);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.08);
+
+}
+
 a {
     text-decoration: none;
     color: black;
 }
 
-h1 {
-    font-size: 1.6em;
+.cityTitle {
+    font-size: 32px;
+    color: #333333;
+    font-weight: 600;
 }
 
 .header {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    margin-bottom: 24px;
 }
 
 .header button {
     margin-left: auto;
 }
-
-/*.container {*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    border: 1px solid black;*/
-/*    border-radius: 10px;*/
-/*    box-sizing: border-box;*/
-/*    padding: 10px;*/
-/*    text-decoration: none;*/
-/*}*/
 
 .buttonContainer {
     margin-top: 10px;
