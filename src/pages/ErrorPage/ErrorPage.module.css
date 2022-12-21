@@ -1,0 +1,19 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+}
+
+.text {
+    text-align: center;
+}
+
+.link {
+
+}
+
+.link:hover {
+    cursor: pointer;
+    color: purple;
+}
