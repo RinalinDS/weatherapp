@@ -65,7 +65,12 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
           </div>
         </NavLink>
         <div className={styles.buttonContainer}>
-          <Button variant="contained" size="large" onClick={updateCityWeather}>
+          <Button
+            style={{ position: 'static' }}
+            variant="contained"
+            size="large"
+            onClick={updateCityWeather}
+          >
             Update
           </Button>
         </div>
