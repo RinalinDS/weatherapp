@@ -4,7 +4,7 @@ import { Delete } from '@mui/icons-material';
 import { Button, IconButton } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
-import { Modal } from '../Modal/Modal';
+import { DeleteModal } from '../Modal/DeleteModal/DeleteModal';
 
 import styles from './CityWeatherShortInfo.module.css';
 
@@ -74,31 +74,11 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
             Update
           </Button>
         </div>
-        {isModalActive && (
-          <Modal setVisible={setModalActive}>
-            <div className={styles.modalTitle}>
-              Are you sure you want to delete this city?
-            </div>
-            <div className={styles.modalButtonsContainer}>
-              <Button
-                color="primary"
-                variant="contained"
-                size="medium"
-                onClick={confirmDeleteHandler}
-              >
-                Delete
-              </Button>
-              <Button
-                color="secondary"
-                variant="contained"
-                size="medium"
-                onClick={() => setModalActive(false)}
-              >
-                Wait, NO!
-              </Button>
-            </div>
-          </Modal>
-        )}
+        <DeleteModal
+          isModalActive={isModalActive}
+          confirmDeleteHandler={confirmDeleteHandler}
+          setModalActive={setModalActive}
+        />
       </>
     );
   },
