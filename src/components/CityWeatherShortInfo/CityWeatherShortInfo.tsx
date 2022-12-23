@@ -41,6 +41,7 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
               <h1 className={styles.cityTitle}>{city}</h1>
               <IconButton
                 size="medium"
+                style={{ position: 'static' }}
                 onClick={e => {
                   callbackHandler(e);
                 }}

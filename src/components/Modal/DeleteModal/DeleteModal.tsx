@@ -17,7 +17,7 @@ export const DeleteModal: FC<DeleteModalPropsType> = ({
   setModalActive,
 }) => {
   // eslint-disable-next-line react/jsx-no-useless-fragment
-  if (!isModalActive) return <></>;
+  if (!isModalActive) return null;
 
   return (
     <Modal setVisible={setModalActive}>
