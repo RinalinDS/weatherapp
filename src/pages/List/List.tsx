@@ -41,13 +41,11 @@ export const List: FC = () => {
       <div className={styles.cityContainer}>
         {cities.map(cityName => (
           <Grid key={cityName} item>
-            <div className={styles.cityInfo}>
-              <CityWeatherShortInfo
-                city={cityName}
-                forecastForCity={forecast[cityName]}
-                callback={deleteCityHandler}
-              />
-            </div>
+            <CityWeatherShortInfo
+              city={cityName}
+              forecastForCity={forecast[cityName]}
+              callback={deleteCityHandler}
+            />
           </Grid>
         ))}
       </div>

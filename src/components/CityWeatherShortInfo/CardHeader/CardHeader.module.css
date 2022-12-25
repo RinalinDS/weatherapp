@@ -1,8 +1,10 @@
 .header {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
+    justify-content: space-between;
     margin-bottom: 24px;
+    max-width: 360px;
+    gap: 24px;
 }
 
 .header button {
@@ -13,4 +15,5 @@
     font-size: 32px;
     color: #333333;
     font-weight: 600;
+    word-break: break-word;
 }

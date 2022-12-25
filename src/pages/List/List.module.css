@@ -1,21 +1,15 @@
-.cityInfo {
-    width: 300px;
-    margin: 10px;
-}
-
 .cityContainer {
+    margin-top: 1rem;
     display: flex;
     flex-flow: row wrap;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 1em;
-}
-.addItemForm {
-    display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
+    gap: 3rem;
+    /*row-gap: 4rem; works in 68% of browsers*/
+    /*column-gap: 5rem; works in 68% of browsers*/
 }
 
-@media screen and (max-width: 768px) {
+
+@media (max-width: 768px) {
     .addItemForm {
         display: flex;
         justify-content: center;
