@@ -1,25 +1,18 @@
+.link {
+    text-decoration: none;
+    color: #333;
+}
+
 .card {
     box-shadow: 0 16px 32px rgba(0, 0, 0, 0.10);
     border-radius: 11px;
-    padding: 18px 36px;
+    padding: 24px 36px;
     transition: all 400ms;
 }
 
 .card:hover {
     transform: translateY(-1rem);
     box-shadow: 0 24px 48px rgba(0, 0, 0, 0.08);
-
-}
-
-a {
-    text-decoration: none;
-    color: black;
-}
-
-.cityTitle {
-    font-size: 32px;
-    color: #333333;
-    font-weight: 600;
 }
 
 .header {
@@ -33,45 +26,48 @@ a {
     margin-left: auto;
 }
 
-.buttonContainer {
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-}
 
-.modalButtonsContainer {
-    display: flex;
-    gap: 80px;
-    justify-content: center;
-    align-items: center;
+.cityTitle {
+    font-size: 32px;
+    color: #333333;
+    font-weight: 600;
 }
 
 .list {
-    list-style:none;
+    list-style: none;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
 }
 
-.button {
-    box-sizing: border-box;
-    align-items: center;
-    background: linear-gradient(270.32deg, rgba(0, 226, 255, 0.62) -4.89%, rgba(0, 142, 238, 0.62) 85.28%), #008EEE;
-    border: 2px solid #149589;
-    color: white;
+
+.buttonContainer {
+    margin-top: 16px;
     display: flex;
     justify-content: center;
-    text-decoration: none;
-    border-radius: 10px;
-    font-family: Poppins, sans-serif;
-    font-style: normal;
-    line-height: 27px;
-    font-weight: 600;
-    font-size: 18px;
-    width: 100%;
 }
 
-.button:hover {
-    background: linear-gradient(270.32deg, rgba(0, 142, 238, 0.62) -4.89%, rgba(0, 226, 255, 0.62) 104.98%), #008EEE;
-}
+
+
+/*.button {*/
+/*    box-sizing: border-box;*/
+/*    align-items: center;*/
+/*    background: linear-gradient(270.32deg, rgba(0, 226, 255, 0.62) -4.89%, rgba(0, 142, 238, 0.62) 85.28%), #008EEE;*/
+/*    border: 2px solid #149589;*/
+/*    color: white;*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    text-decoration: none;*/
+/*    border-radius: 10px;*/
+/*    font-family: Poppins, sans-serif;*/
+/*    font-style: normal;*/
+/*    line-height: 27px;*/
+/*    font-weight: 600;*/
+/*    font-size: 18px;*/
+/*    width: 100%;*/
+/*}*/
+
+/*.button:hover {*/
+/*    background: linear-gradient(270.32deg, rgba(0, 142, 238, 0.62) -4.89%, rgba(0, 226, 255, 0.62) 104.98%), #008EEE;*/
+/*}*/

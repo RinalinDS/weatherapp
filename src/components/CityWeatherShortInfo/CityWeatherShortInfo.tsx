@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 import { DeleteModal } from '../Modal/DeleteModal/DeleteModal';
 
 import styles from './CityWeatherShortInfo.module.css';
+import ShortInfoList from './ShortInfoList/ShortInfoList';
 
 import { useAppDispatch } from 'hooks/useAppHooks';
 import { requestCurrentWeather } from 'store/reducers/WeatherReducer';
@@ -35,34 +36,19 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
 
     return (
       <>
-        <NavLink to={`/${city}`}>
+        <NavLink to={`/${city}`} className={styles.link}>
           <div className={styles.card}>
             <div className={styles.header}>
               <h1 className={styles.cityTitle}>{city}</h1>
               <IconButton
                 size="medium"
                 style={{ position: 'static' }}
-                onClick={e => {
-                  callbackHandler(e);
-                }}
+                onClick={callbackHandler}
               >
                 <Delete fontSize="small" />
               </IconButton>
             </div>
-            <ul className={styles.list}>
-              <li>
-                <b>Temperature:</b> {forecastForCity?.forecast?.main?.temp}°C
-              </li>
-              <li>
-                <b>Feels like:</b> {forecastForCity?.forecast.main?.feels_like}°C
-              </li>
-              <li>
-                <b>Wind speed:</b> {forecastForCity?.forecast.wind?.speed} m/s
-              </li>
-              <li>
-                <b>Pressure:</b> {forecastForCity?.forecast.main?.pressure} mm
-              </li>
-            </ul>
+            <ShortInfoList forecastForCity={forecastForCity} />
           </div>
         </NavLink>
         <div className={styles.buttonContainer}>

@@ -11,11 +11,11 @@ type AddItemFormPropsType = {
 };
 
 export const AddItemForm: FC<AddItemFormPropsType> = memo(({ callBack, disabled }) => {
-  const [newCityTitle, setNewCityTitle] = useState('');
+  const [newTitle, setNewTitle] = useState('');
   const [error, setError] = useState<string | null>(null);
 
   const onSetNewTitleHandler = (e: ChangeEvent<HTMLInputElement>): void =>
-    setNewCityTitle(e.currentTarget.value);
+    setNewTitle(e.currentTarget.value);
 
   const onEnterKeyPressHandler = (e: KeyboardEvent<HTMLInputElement>): void => {
     if (error) {
@@ -26,9 +26,9 @@ export const AddItemForm: FC<AddItemFormPropsType> = memo(({ callBack, disabled 
     }
   };
   const addItem = (): void => {
-    if (newCityTitle.trim()) {
-      callBack(newCityTitle.trim());
-      setNewCityTitle('');
+    if (newTitle.trim()) {
+      callBack(newTitle.trim());
+      setNewTitle('');
     } else {
       setError('Title is required');
     }
@@ -38,7 +38,7 @@ export const AddItemForm: FC<AddItemFormPropsType> = memo(({ callBack, disabled 
     <div className={styles.container}>
       <TextField
         variant="outlined"
-        value={newCityTitle}
+        value={newTitle}
         onChange={onSetNewTitleHandler}
         onKeyDown={onEnterKeyPressHandler}
         error={!!error}

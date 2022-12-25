@@ -2,8 +2,9 @@ import React, { FC } from 'react';
 
 import { Button } from '@mui/material';
 
-import styles from '../../CityWeatherShortInfo/CityWeatherShortInfo.module.css';
 import { Modal } from '../Modal';
+
+import styles from './DeleteModal.module.css';
 
 type DeleteModalPropsType = {
   isModalActive: boolean;
@@ -16,8 +17,9 @@ export const DeleteModal: FC<DeleteModalPropsType> = ({
   confirmDeleteHandler,
   setModalActive,
 }) => {
-  // eslint-disable-next-line react/jsx-no-useless-fragment
   if (!isModalActive) return null;
+
+  const onCancelClickHandler = () => setModalActive(false);
 
   return (
     <Modal setVisible={setModalActive}>
@@ -35,7 +37,7 @@ export const DeleteModal: FC<DeleteModalPropsType> = ({
           color="secondary"
           variant="contained"
           size="medium"
-          onClick={() => setModalActive(false)}
+          onClick={onCancelClickHandler}
         >
           Wait, NO!
         </Button>

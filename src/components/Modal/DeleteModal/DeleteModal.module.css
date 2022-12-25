@@ -1,0 +1,23 @@
+.modalTitle {
+    font-weight: 500;
+    color: #333333;
+    letter-spacing: -0.5px;
+    font-size: 24px;
+}
+
+.modalButtonsContainer {
+    display: flex;
+    gap: 80px;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .modalTitle {
+        font-size: 20px;
+    }
+
+    .modalButtonsContainer {
+        gap: 40px;
+    }
+}
