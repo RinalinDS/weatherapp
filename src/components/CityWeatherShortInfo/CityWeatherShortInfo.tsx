@@ -1,11 +1,11 @@
-import React, { FC, memo, SyntheticEvent, useState } from 'react';
+import React, { FC, memo, useState } from 'react';
 
-import { Delete } from '@mui/icons-material';
-import { Button, IconButton } from '@mui/material';
+import { Button } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
 import { DeleteModal } from '../Modal/DeleteModal/DeleteModal';
 
+import CardHeader from './CardHeader/CardHeader';
 import styles from './CityWeatherShortInfo.module.css';
 import ShortInfoList from './ShortInfoList/ShortInfoList';
 
@@ -23,10 +23,7 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
   ({ city, callback, forecastForCity }) => {
     const dispatch = useAppDispatch();
     const [isModalActive, setModalActive] = useState<boolean>(false);
-    const callbackHandler = (e: SyntheticEvent) => {
-      e.preventDefault();
-      setModalActive(true);
-    };
+
     const confirmDeleteHandler = () => {
       callback(city);
     };
@@ -38,16 +35,7 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
       <>
         <NavLink to={`/${city}`} className={styles.link}>
           <div className={styles.card}>
-            <div className={styles.header}>
-              <h1 className={styles.cityTitle}>{city}</h1>
-              <IconButton
-                size="medium"
-                style={{ position: 'static' }}
-                onClick={callbackHandler}
-              >
-                <Delete fontSize="small" />
-              </IconButton>
-            </div>
+            <CardHeader city={city} setModalActive={setModalActive} />
             <ShortInfoList forecastForCity={forecastForCity} />
           </div>
         </NavLink>

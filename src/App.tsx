@@ -2,6 +2,7 @@ import React, { FC, useEffect, useState } from 'react';
 
 import { LinearProgress } from '@mui/material';
 
+import styles from './App.module.css';
 import { Header } from './components/Header/Header';
 import { RoutesComponent } from './components/Routes/Routes';
 
@@ -23,12 +24,7 @@ export const App: FC = () => {
     setIsLoaded(false);
   }, []);
 
-  if (isLoading)
-    return (
-      <h1 style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-        INITIAL LOADING....
-      </h1>
-    );
+  if (isLoading) return <h1 className={styles.loader}>INITIAL LOADING....</h1>;
 
   return (
     <div>

@@ -1,0 +1,16 @@
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 24px;
+}
+
+.header button {
+    margin-left: auto;
+}
+
+.cityTitle {
+    font-size: 32px;
+    color: #333333;
+    font-weight: 600;
+}

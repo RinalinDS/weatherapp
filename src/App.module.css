@@ -1,5 +1,5 @@
-.container {
+.loader {
     display: flex;
-    flex-direction: column;
-    padding: 0 4rem;
+    justify-content: center;
+    align-items: center;
 }

@@ -1,7 +1,8 @@
 import React, { FC } from 'react';
 
 import { ForecastType } from '../../../types/StateTypes';
-import styles from '../CityWeatherShortInfo.module.css';
+
+import styles from './ShortInfoList.module.css';
 
 type ShortInfoListPropsType = {
   forecastForCity: ForecastType;
