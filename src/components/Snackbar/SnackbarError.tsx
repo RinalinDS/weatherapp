@@ -5,6 +5,8 @@ import { IconButton } from '@mui/material';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 
+import generalStyles from '../../common/styles.module.css';
+
 import { useAppDispatch, useAppSelector } from 'hooks/useAppHooks';
 import { setAppError } from 'store/reducers/AppReducer';
 import { selectError } from 'store/selectors/AppSelectors';
@@ -39,7 +41,7 @@ export const ErrorSnackbar: FC = () => {
         action={action}
       >
         <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
-          {error}
+          <span className={generalStyles.text}>{error}</span>
         </Alert>
       </Snackbar>
     </div>
