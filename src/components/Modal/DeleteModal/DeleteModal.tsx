@@ -26,6 +26,7 @@ export const DeleteModal: FC<DeleteModalPropsType> = ({
       <div className={styles.modalTitle}>Are you sure you want to delete this city?</div>
       <div className={styles.modalButtonsContainer}>
         <Button
+          style={{ position: 'static' }}
           color="primary"
           variant="contained"
           size="medium"
@@ -34,6 +35,7 @@ export const DeleteModal: FC<DeleteModalPropsType> = ({
           Delete
         </Button>
         <Button
+          style={{ position: 'static' }}
           color="secondary"
           variant="contained"
           size="medium"

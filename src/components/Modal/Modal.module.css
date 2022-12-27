@@ -11,18 +11,18 @@
 }
 
 .modal {
-    padding: 40px;
+    padding: 3rem;
     border-radius: 12px;
     background-color: white;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 3rem;
 }
 
 @media (max-width: 768px) {
     .modal {
-        padding: 32px;
-        gap: 24px;
+        padding: 2.4rem;
+        gap: 2.4rem;
     }
 
 }
