@@ -2,18 +2,15 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-bottom: 24px;
-    max-width: 360px;
-    gap: 24px;
+    margin-bottom: 2.4rem;
+    max-width: 36rem;
+    gap: 2.4rem;
 }
 
 .header button {
     margin-left: auto;
 }
 
-.cityTitle {
-    font-size: 32px;
-    color: #333333;
-    font-weight: 600;
-    word-break: break-word;
+.button svg {
+    font-size: 2.4rem;
 }

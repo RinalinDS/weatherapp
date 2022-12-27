@@ -37,6 +37,7 @@ export const AddItemForm: FC<AddItemFormPropsType> = memo(({ callBack, disabled 
   return (
     <div className={styles.container}>
       <TextField
+        className={styles.textField}
         variant="outlined"
         value={newTitle}
         onChange={onSetNewTitleHandler}
@@ -46,7 +47,12 @@ export const AddItemForm: FC<AddItemFormPropsType> = memo(({ callBack, disabled 
         helperText={error}
         disabled={disabled}
       />
-      <IconButton color="primary" onClick={addItem} disabled={disabled}>
+      <IconButton
+        className={styles.button}
+        color="primary"
+        onClick={addItem}
+        disabled={disabled}
+      >
         <AddBoxIcon />
       </IconButton>
     </div>

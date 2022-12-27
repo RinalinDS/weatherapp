@@ -12,7 +12,7 @@ export const ErrorPage = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.text}>
+      <h1 className={styles.errorText}>
         {ErrorText}{' '}
         {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events */}
         <span className={styles.link} onClick={backOneLevelHandler}>

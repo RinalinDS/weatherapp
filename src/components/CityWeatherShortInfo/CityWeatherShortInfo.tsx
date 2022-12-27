@@ -7,7 +7,7 @@ import { DeleteModal } from '../Modal/DeleteModal/DeleteModal';
 
 import CardHeader from './CardHeader/CardHeader';
 import styles from './CityWeatherShortInfo.module.css';
-import ShortInfoList from './ShortInfoList/ShortInfoList';
+import { ShortInfoList } from './ShortInfoList/ShortInfoList';
 
 import { useAppDispatch } from 'hooks/useAppHooks';
 import { requestCurrentWeather } from 'store/reducers/WeatherReducer';
@@ -41,7 +41,7 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
         </NavLink>
         <div className={styles.buttonContainer}>
           <Button
-            style={{ position: 'static' }}
+            style={{ position: 'static', fontSize: '1.4rem' }}
             variant="contained"
             size="large"
             onClick={updateCityWeather}

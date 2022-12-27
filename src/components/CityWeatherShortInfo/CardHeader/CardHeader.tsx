@@ -3,6 +3,8 @@ import React, { FC, SyntheticEvent } from 'react';
 import { Delete } from '@mui/icons-material';
 import { IconButton } from '@mui/material';
 
+import generalStyles from '../../../common/styles.module.css';
+
 import styles from './CardHeader.module.css';
 
 type CardHeaderPropsType = {
@@ -18,8 +20,13 @@ export const CardHeader: FC<CardHeaderPropsType> = ({ setModalActive, city }) =>
 
   return (
     <div className={styles.header}>
-      <h1 className={styles.cityTitle}>{city}</h1>
-      <IconButton size="medium" style={{ position: 'static' }} onClick={callbackHandler}>
+      <h1 className={generalStyles.cityName}>{city}</h1>
+      <IconButton
+        className={styles.button}
+        size="medium"
+        style={{ position: 'static' }}
+        onClick={callbackHandler}
+      >
         <Delete fontSize="small" />
       </IconButton>
     </div>

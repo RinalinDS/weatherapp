@@ -1,17 +1,23 @@
 .cityContainer {
-    margin-top: 1rem;
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
+    align-items: center;
     gap: 3rem;
     /*row-gap: 4rem; works in 68% of browsers*/
     /*column-gap: 5rem; works in 68% of browsers*/
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 48em) {
     .addItemForm {
         display: flex;
         justify-content: center;
     }
+    .cityContainer {
+        justify-content: center;
+    }
 }
+
+
+
