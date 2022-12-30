@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, SyntheticEvent } from 'react';
+import React, { FC, ReactNode, SyntheticEvent, useEffect } from 'react';
 
 import styles from './Modal.module.css';
 
@@ -15,10 +15,18 @@ export const Modal: FC<ModalPropsType> = ({ children, setVisible }) => {
     e.stopPropagation();
   };
 
+  useEffect(() => {
+    const onEscapeKeyHandler = function (this: Window, ev: KeyboardEvent) {
+      if (ev.key === 'Escape') setVisible(false);
+    };
+    window.addEventListener('keydown', onEscapeKeyHandler);
+    return () => {
+      window.removeEventListener('keydown', onEscapeKeyHandler);
+    };
+  }, []);
+
   return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events
     <div className={styles.container} onClick={onClickHandler}>
-      {/* eslint-disable-next-line jsx-a11y/no-static-element-interactions,jsx-a11y/click-events-have-key-events */}
       <div className={styles.modal} onClick={stopPropagationHandler}>
         {children}
       </div>
