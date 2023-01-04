@@ -11,6 +11,7 @@ import { useAppDispatch, useAppSelector } from 'hooks/useAppHooks';
 import { requestCurrentWeather } from 'store/reducers/WeatherReducer';
 import { selectStatus } from 'store/selectors/AppSelectors';
 import { RequestStatusType } from 'types/AppTypes';
+import { Footer } from './components/footer/footer';
 
 export const App: FC = () => {
   const dispatch = useAppDispatch();
@@ -27,11 +28,12 @@ export const App: FC = () => {
   if (isLoading) return <h1 className={styles.loader}>INITIAL LOADING....</h1>;
 
   return (
-    <div>
+    <div className={styles.container}>
       <Header />
       {status === 'loading' && <LinearProgress color="secondary" />}
       <RoutesComponent />
       <ErrorSnackbar />
+      <Footer />
     </div>
   );
 };

@@ -1,21 +1,29 @@
+.container {
+  max-width: 144rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0 4rem;
+  margin: 0 auto 2rem;
+}
+
 .list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.4rem;
-    line-height: 1.4;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.4rem;
+  line-height: 1.4;
 }
 
 .cityName {
-    font-size: 3.6rem;
-    color: #333333;
-    font-weight: 600;
-    word-break: break-word;
-    letter-spacing: -0.5px;
+  font-size: 3.6rem;
+  color: #333333;
+  font-weight: 600;
+  word-break: break-word;
+  letter-spacing: -0.5px;
 }
 
 .text {
-    font-size: 1.6rem;
-    font-weight: 400;
+  font-size: 1.6rem;
+  font-weight: 400;
 }
