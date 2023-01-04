@@ -33,7 +33,7 @@ export const App: FC = () => {
       {status === 'loading' && <LinearProgress color="secondary" />}
       <RoutesComponent />
       <ErrorSnackbar />
-      <Footer />
+      <Footer isListEmpty={cities.length === 0} />
     </div>
   );
 };
