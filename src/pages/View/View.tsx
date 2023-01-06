@@ -32,7 +32,7 @@ export const View = () => {
         <div>
           <img src={weatherIcon} alt="weather icon" />
         </div>
-        <FullWeatherListInfo forecast={forecast.forecast} />
+        <FullWeatherListInfo forecast={forecast?.forecast} />
       </div>
     </div>
   );
