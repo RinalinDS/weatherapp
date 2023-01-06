@@ -28,7 +28,7 @@ export const App: FC = () => {
   if (isLoading) return <h1 className={styles.loader}>INITIAL LOADING....</h1>;
 
   return (
-    <div className={styles.container}>
+    <div>
       <Header />
       {status === 'loading' && <LinearProgress color="secondary" />}
       <RoutesComponent />

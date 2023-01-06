@@ -1,16 +1,47 @@
 import React, { FC } from 'react';
 import styles from './footer.module.css';
 import generalStyles from './../../common/styles.module.css';
-import TelegramIcon from '@mui/icons-material/Telegram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import TelegramIcon from '@mui/icons-material/Telegram';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import logo from './../../assets/logo.jpg';
+import { CustomList } from './CustomList/CustomList';
 
-type footerPropsType = {
+type FooterPropsType = {
   isListEmpty: boolean;
 };
 
-export const Footer: FC<footerPropsType> = ({ isListEmpty }) => {
+export type ContactType = {
+  href: string;
+  text: string;
+  icon?: React.ReactNode;
+};
+
+const contactItems: ContactType[] = [
+  {
+    href: 'https://t.me/RinalinDS',
+    text: 'Write to me in',
+    icon: <TelegramIcon fontSize="large" />,
+  },
+  {
+    href: 'https://www.linkedin.com/in/denis-pilyutin-647514197/',
+    text: `Connect with me via`,
+    icon: <LinkedInIcon fontSize="large" />,
+  },
+  {
+    href: 'https://github.com/RinalinDS',
+    text: `Watch source code on`,
+    icon: <GitHubIcon fontSize="large" />,
+  },
+];
+
+const ResourcesList = [
+  { href: '#', text: 'About' },
+  { href: '#', text: 'Careers' },
+  { href: '#', text: 'For Business' },
+];
+
+export const Footer: FC<FooterPropsType> = ({ isListEmpty }) => {
   const footerStyle = `${styles.footer} ${
     isListEmpty ? styles.footerFixed : styles.footerNotFixed
   }`;
@@ -25,49 +56,8 @@ export const Footer: FC<footerPropsType> = ({ isListEmpty }) => {
               Dmitrievich. All rights reserved
             </p>
           </div>
-          <div className={styles.contacts}>
-            <h2 className={styles.title}>Creator's contacts</h2>
-            <ul className={styles.list}>
-              <li>
-                <a className={styles.footerLink} href="https://t.me/RinalinDSl">
-                  Write to me in <TelegramIcon fontSize="large" />
-                </a>
-              </li>
-              <li>
-                <a
-                  className={styles.footerLink}
-                  href="https://www.linkedin.com/in/denis-pilyutin-647514197/"
-                >
-                  Connect with me via <LinkedInIcon fontSize="large" />
-                </a>
-              </li>
-              <li>
-                <a className={styles.footerLink} href="https://github.com/RinalinDS">
-                  Watch source code on <GitHubIcon fontSize="large" />
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className={styles.contacts}>
-            <h2 className={styles.title}>Resources</h2>
-            <ul className={styles.list}>
-              <li>
-                <a className={styles.footerLink} href="#">
-                  About
-                </a>
-              </li>
-              <li>
-                <a className={styles.footerLink} href="#">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a className={styles.footerLink} href="#">
-                  For Business
-                </a>
-              </li>
-            </ul>
-          </div>
+          <CustomList items={contactItems} title={`Creator's contacts`} />
+          <CustomList items={ResourcesList} title={'Resources'} />
         </div>
       </div>
     </footer>
