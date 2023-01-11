@@ -1,16 +1,13 @@
 .header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 2.4rem;
-    max-width: 36rem;
-    gap: 2.4rem;
-}
-
-.header button {
-    margin-left: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2.4rem;
+  max-width: 36rem;
+  gap: 2.4rem;
 }
 
 .button svg {
-    font-size: 2.4rem;
+  font-size: 2.4rem;
 }
