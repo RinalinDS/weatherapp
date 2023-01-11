@@ -17,12 +17,10 @@ export const DeleteModal: FC<DeleteModalPropsType> = ({
   confirmDeleteHandler,
   setModalActive,
 }) => {
-  if (!isModalActive) return null;
-
   const onCancelClickHandler = () => setModalActive(false);
 
   return (
-    <Modal setVisible={setModalActive}>
+    <Modal setVisible={setModalActive} isModalActive={isModalActive}>
       <div className={styles.modalTitle}>Are you sure you want to delete this city?</div>
       <div className={styles.modalButtonsContainer}>
         <Button
