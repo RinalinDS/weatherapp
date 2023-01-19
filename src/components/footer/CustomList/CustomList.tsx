@@ -12,8 +12,8 @@ export const CustomList: FC<CustomListPropsType> = ({ items, title }) => {
     <div>
       <h2 className={styles.title}>{title}</h2>
       <ul className={styles.list}>
-        {items.map(m => (
-          <li>
+        {items.map((m, i) => (
+          <li key={i}>
             <a className={styles.footerLink} href={m.href}>
               {m.text} {m.icon || ''}
             </a>
