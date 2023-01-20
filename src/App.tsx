@@ -7,21 +7,21 @@ import { Header } from './components/Header/Header';
 import { RoutesComponent } from './components/Routes/Routes';
 
 import { ErrorSnackbar } from 'components/Snackbar/SnackbarError';
-import { useAppDispatch, useAppSelector } from 'hooks/useAppHooks';
-import { requestCurrentWeather } from 'store/reducers/WeatherReducer';
 import { selectStatus } from 'store/selectors/AppSelectors';
 import { RequestStatusType } from 'types/AppTypes';
 import { Footer } from './components/footer/footer';
+import { useAppSelector } from './hooks/useAppSelector';
+import { useActions } from './hooks/useActions';
 
 export const App: FC = () => {
-  const dispatch = useAppDispatch();
+  const { requestCurrentWeather } = useActions();
   const status = useAppSelector<RequestStatusType>(selectStatus);
   const cities = useAppSelector<string[]>(state => state.weather.cities);
 
   const [isLoading, setIsLoaded] = useState(true);
 
   useEffect(() => {
-    cities.forEach(city => dispatch(requestCurrentWeather({ city })));
+    cities.forEach(city => requestCurrentWeather({ city }));
     setIsLoaded(false);
   }, []);
 

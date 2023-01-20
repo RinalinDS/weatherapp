@@ -8,10 +8,8 @@ import { DeleteModal } from '../Modal/DeleteModal/DeleteModal';
 import CardHeader from './CardHeader/CardHeader';
 import styles from './CityWeatherShortInfo.module.css';
 import { ShortInfoList } from './ShortInfoList/ShortInfoList';
-
-import { useAppDispatch } from 'hooks/useAppHooks';
-import { requestCurrentWeather } from 'store/reducers/WeatherReducer';
 import { ForecastType } from 'types/StateTypes';
+import { useActions } from '../../hooks/useActions';
 
 type CityWeatherShortInfoPropsType = {
   city: string;
@@ -21,14 +19,14 @@ type CityWeatherShortInfoPropsType = {
 
 export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
   ({ city, callback, forecastForCity }) => {
-    const dispatch = useAppDispatch();
+    const { requestCurrentWeather } = useActions();
     const [isModalActive, setModalActive] = useState<boolean>(false);
 
     const confirmDeleteHandler = () => {
       callback(city);
     };
     const updateCityWeather = () => {
-      dispatch(requestCurrentWeather({ city, initRequest: false }));
+      requestCurrentWeather({ city, initRequest: false });
     };
 
     return (

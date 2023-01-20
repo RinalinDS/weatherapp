@@ -6,11 +6,10 @@ import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 
 import generalStyles from '../../common/styles.module.css';
-
-import { useAppDispatch, useAppSelector } from 'hooks/useAppHooks';
-import { setAppError } from 'store/reducers/AppReducer';
 import { selectError } from 'store/selectors/AppSelectors';
 import { NullableType } from 'types/AppTypes';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { useActions } from '../../hooks/useActions';
 
 const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
   <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />
@@ -18,13 +17,13 @@ const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => (
 
 export const ErrorSnackbar: FC = () => {
   const error = useAppSelector<NullableType<string>>(selectError);
-  const dispatch = useAppDispatch();
+  const { setAppError } = useActions();
 
   const handleClose = (event?: React.SyntheticEvent | Event, reason?: string): void => {
     if (reason === 'clickaway') {
       return;
     }
-    dispatch(setAppError({ error: null }));
+    setAppError({ error: null });
   };
   const action = (
     <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>

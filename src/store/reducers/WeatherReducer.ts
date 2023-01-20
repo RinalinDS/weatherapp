@@ -66,6 +66,9 @@ const slice = createSlice({
     });
   },
 });
-
+export const weatherActions = {
+  requestCurrentWeather,
+  ...slice.actions,
+};
 export const weatherReducer = slice.reducer;
 export const { deleteCity, addNewCity } = slice.actions;

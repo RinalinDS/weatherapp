@@ -4,14 +4,14 @@ import { Grid } from '@mui/material';
 
 import { AddItemForm } from 'components/AddItemForm/AddItemForm';
 import { CityWeatherShortInfo } from 'components/CityWeatherShortInfo/CityWeatherShortInfo';
-import { useAppDispatch, useAppSelector } from 'hooks/useAppHooks';
 import styles from 'pages/List/List.module.css';
-import { deleteCity, requestCurrentWeather } from 'store/reducers/WeatherReducer';
 import { selectCities, selectForecast } from 'store/selectors/WeatherSelectors';
 import { ForecastStateType } from 'types/StateTypes';
+import { useAppSelector } from '../../hooks/useAppSelector';
+import { useActions } from '../../hooks/useActions';
 
 export const List: FC = () => {
-  const dispatch = useAppDispatch();
+  const { requestCurrentWeather, deleteCity } = useActions();
   const cities = useAppSelector<string[]>(selectCities);
   const forecast = useAppSelector<ForecastStateType>(selectForecast);
 
@@ -22,15 +22,15 @@ export const List: FC = () => {
         .map(m => m.charAt(0).toUpperCase() + m.slice(1).toLowerCase())
         .join(' ');
 
-      dispatch(requestCurrentWeather({ city: cityWithUpperCase }));
+      requestCurrentWeather({ city: cityWithUpperCase });
     },
-    [dispatch],
+    [requestCurrentWeather],
   );
   const deleteCityHandler = useCallback(
     (city: string): void => {
-      dispatch(deleteCity(city));
+      deleteCity(city);
     },
-    [dispatch],
+    [deleteCity],
   );
 
   return (

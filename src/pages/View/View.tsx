@@ -7,8 +7,8 @@ import { FullWeatherListInfo } from '../../components/FullWeatherListInfo/FullWe
 
 import styles from './View.module.css';
 
-import { useAppSelector } from 'hooks/useAppHooks';
 import { ForecastType } from 'types/StateTypes';
+import { useAppSelector } from '../../hooks/useAppSelector';
 
 export const View = () => {
   const { city } = useParams();
