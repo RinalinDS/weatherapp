@@ -1,8 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 
 import { LinearProgress } from '@mui/material';
-
-import styles from './App.module.css';
 import { Header } from './components/Header/Header';
 import { RoutesComponent } from './components/Routes/Routes';
 
@@ -12,20 +10,21 @@ import { RequestStatusType } from 'types/AppTypes';
 import { Footer } from './components/footer/footer';
 import { useAppSelector } from './hooks/useAppSelector';
 import { useActions } from './hooks/useActions';
+import { Preloader } from './components/Preloader/Preloader';
 
 export const App: FC = () => {
   const { requestCurrentWeather } = useActions();
   const status = useAppSelector<RequestStatusType>(selectStatus);
   const cities = useAppSelector<string[]>(state => state.weather.cities);
 
-  const [isLoading, setIsLoaded] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     cities.forEach(city => requestCurrentWeather({ city }));
-    setIsLoaded(false);
+    setIsLoading(false);
   }, []);
 
-  if (isLoading) return <h1 className={styles.loader}>INITIAL LOADING....</h1>;
+  if (isLoading) return <Preloader />;
 
   return (
     <div>
