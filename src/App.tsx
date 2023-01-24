@@ -5,7 +5,7 @@ import { Header } from './components/Header/Header';
 import { RoutesComponent } from './components/Routes/Routes';
 
 import { ErrorSnackbar } from 'components/Snackbar/SnackbarError';
-import { selectStatus } from 'store/selectors/AppSelectors';
+import { selectCities, selectStatus } from 'store/selectors/AppSelectors';
 import { RequestStatusType } from 'types/AppTypes';
 import { Footer } from './components/footer/footer';
 import { useAppSelector } from './hooks/useAppSelector';
@@ -15,7 +15,7 @@ import { Preloader } from './components/Preloader/Preloader';
 export const App: FC = () => {
   const { requestCurrentWeather } = useActions();
   const status = useAppSelector<RequestStatusType>(selectStatus);
-  const cities = useAppSelector<string[]>(state => state.weather.cities);
+  const cities = useAppSelector<string[]>(selectCities);
 
   const [isLoading, setIsLoading] = useState(true);
 
