@@ -1,31 +1,43 @@
-# for learning purpose
+# Rinalin's Weather Forecast Application
 
-## You know what to do : ```yarn install``` , ```yarn start```
+## 1. Project Description
 
-## stack :
+Rinalin's Weather Forecast application is a simple yet powerful tool built with React, allowing users to easily view
+weather forecasts in any city. The app features a modern and intuitive interface, making it easy to find and view
+the weather data you need. With a focus on providing accurate weather information, the app includes detailed data on
+temperatures, humidity, wind speed, and more. All the data is presented in an easy to read format,
+allowing you to quickly make decisions based on the weather conditions.
 
-- "@emotion/react": "^11.10.0",
-- "@emotion/styled": "^11.10.0",
-- "@mui/icons-material": "^5.8.4",
-- "@mui/material": "^5.9.2",
-- "@reduxjs/toolkit": "^1.8.3",
-- "@testing-library/jest-dom": "^5.16.4",
-- "@testing-library/react": "^13.0.0",
-- "@testing-library/user-event": "^13.2.1",
-- "@types/jest": "^27.0.1",
-- "@types/node": "^16.7.13",
-- "@types/react": "^18.0.0",
-- "@types/react-dom": "^18.0.0",
-- "@types/redux-mock-store": "^1.0.3",
-- "axios": "^0.27.2",
-- "gh-pages": "^4.0.0",
-- "react": "^18.2.0",
-- "react-dom": "^18.2.0",
-- "react-redux": "^8.0.2",
-- "react-router-dom": "^6.3.0",
-- "react-scripts": "5.0.1",
-- "redux-mock-store": "^1.5.4",
-- "redux-thunk": "^2.4.1",
-- "typescript": "^4.4.2",
-- "web-vitals": "^2.1.0"
+Besides React, i used next libraries , that i felt very a good fit for the project such as:
 
+- Redux Toolkit for state management
+- Material UI for visual part
+- React-router-dom for navigation
+- axios for server requests
+- As a replacement for backend to store data externally i used browser Localstorage
+
+### Challenges I met , while developing this app:
+
+- I learned that you can subscribe to store changed and sent them to local storage directly without using additional functions
+- Discovered that city Llanfairpwllgwyngyllgogerychwyrndrobwllllantysiliogogogoch exists and how to handle such a large Title in card.
+- Found some pitfalls like , if you will open app.adress/#/london directly from your browser, it will work as intented
+- Was difficult to not duplicate Thunks , but i managed to overcome it using flags initRequest = true/false
+
+## 2. How to Install and Run the Project
+
+After downloading source code, depending on package managers you're using you should:
+
+1. Install packages, with Yarn : `yarn install` or simply `yarn`;
+   with NPM : `npm install`
+2. Start the project: `yarn start` , `npm start`
+3. The project will be opened on localhost:3000
+
+## 3. How to Use the Project
+
+1. This is what starter page will look like:
+   ![img.png](src/assets/readme/img.png)
+2. Type some city name (e.g. London) into input field , and press 'Enter' or click on plus icon
+3. The Weather Card with short info about London's weather will appear.
+4. For detailer info you can click on card it will send you to another page.
+5. To get back from detailed info use 'Home' button in Header.
+6. Cities array will be saved in local storage, so on page reload you will get the same results.
