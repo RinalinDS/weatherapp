@@ -42,3 +42,12 @@ After downloading source code, depending on package managers you're using you sh
 4. For detailed info you can click on card it will send you to another page.
 5. To get back from detailed info use 'Home' button in Header.
 6. Cities array will be saved in local storage, so on page reload you will get the same results.
+
+## 4. Roadmap
+
+- [x] Make working MVP;
+- [ ] Expand functionality by including the ability to get a 5-day forecast for a particular city;
+
+## 5. License
+
+Distributed under the MIT License. See LICENSE.txt for more information.
