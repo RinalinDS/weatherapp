@@ -1,19 +1,22 @@
 .container {
-    display: flex;
-    margin: 3rem 0;
-    align-items: center;
+  display: flex;
+  margin: 3rem 0;
+  align-items: center;
 }
 
 .textField label {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
 }
 .textField input {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
 }
 .textField span {
-    font-size: 1.6rem;
+  font-size: 1.6rem;
+}
+.textField p {
+  font-size: 0.9rem;
 }
 
 .button svg {
-    font-size: 3.2rem;
+  font-size: 3.2rem;
 }

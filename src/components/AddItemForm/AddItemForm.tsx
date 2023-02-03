@@ -26,11 +26,14 @@ export const AddItemForm: FC<AddItemFormPropsType> = memo(({ callBack, disabled 
     }
   };
   const addItem = (): void => {
-    if (newTitle.trim()) {
-      callBack(newTitle.trim());
+    let title = newTitle.trim();
+    // check it title exists and doesn't contain any numbers ,
+    // because API can accept 02154 as Postal code, and it's not intended
+    if (title && !title.split('').some(f => !isNaN(+f))) {
+      callBack(title);
       setNewTitle('');
     } else {
-      setError('Title is required');
+      setError(`Title is required and can't contain numbers`);
     }
   };
 
