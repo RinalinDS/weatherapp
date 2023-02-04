@@ -7,23 +7,17 @@ const weatherInstance = axios.create({
   baseURL: 'https://api.openweathermap.org/data/2.5/',
 });
 
-// export const weatherAPI = {
-//   getCurrentWeatherInCity(cityName: string) {
-//     return weatherInstance.get<CityWeatherType>(
-//       `weather?q=${cityName}&appid=${process.env.REACT_APP_APIKEY}&units=metric`,
-//     );
-//   },
-// };
+const params = {
+  units: 'metric',
+  appid: process.env.REACT_APP_APIKEY!,
+};
 
 export const weatherAPI = {
   getCurrentWeatherInCity(cityName: string) {
-    return weatherInstance.get<CityWeatherType>(`weather`, {
-      params: {
-        q: cityName,
-        appid: process.env.REACT_APP_APIKEY!,
-        units: 'metric',
-      },
-    });
+    return weatherInstance.get<CityWeatherType>(`weather?q=${cityName}`, { params });
+  },
+  getFiveDayForecastInCity(cityName: string) {
+    return weatherInstance.get(`forecast?q=${cityName}`, { params });
   },
 };
 
