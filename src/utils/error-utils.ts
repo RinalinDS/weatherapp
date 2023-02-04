@@ -2,7 +2,7 @@ import { setAppError, setAppStatus } from 'store/reducers/AppReducer';
 import { ThunkApiType } from 'types/UtilTypes';
 
 export const handleAsyncServerNetworkError = (
-  message: string,
+  message: string | undefined,
   thunkAPI: ThunkApiType,
 ): any => {
   thunkAPI.dispatch(setAppError({ error: message || 'Some Error occurred' }));

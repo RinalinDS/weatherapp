@@ -6,6 +6,7 @@ import { countryAPI, weatherAPI } from 'api/API';
 import { ForecastStateType, ForecastType, ThunkReturnType } from 'types/StateTypes';
 import { RejectValueType } from 'types/UtilTypes';
 import { handleAsyncServerNetworkError } from 'utils/error-utils';
+import { AxiosError } from 'axios';
 
 export const requestCurrentWeather = createAsyncThunk<
   ThunkReturnType,
@@ -28,7 +29,10 @@ export const requestCurrentWeather = createAsyncThunk<
 
     return { forecast: data, city };
   } catch (e) {
-    return handleAsyncServerNetworkError((e as Error).message, thunkAPI);
+    return handleAsyncServerNetworkError(
+      (e as AxiosError<{ cod: string; message: string }>)?.response?.data?.message,
+      thunkAPI,
+    );
   } finally {
     dispatch(setAppStatus({ status: 'idle' }));
   }
