@@ -5,12 +5,14 @@ import { getCitiesFromLocalStorage } from '../utils/getFromLocal';
 
 import { appReducer } from './reducers/AppReducer';
 import { weatherReducer } from './reducers/WeatherReducer';
+import { HourlyForecastList } from '../types/DayWeatherType';
 
 export const store = configureStore({
   preloadedState: {
     weather: {
       cities: getCitiesFromLocalStorage(),
       forecast: {},
+      longForecast: [] as HourlyForecastList[],
     },
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(thunkMiddleware),
