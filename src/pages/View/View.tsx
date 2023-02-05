@@ -1,39 +1,55 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import { useParams } from 'react-router-dom';
 
-import generalStyles from '../../common/styles.module.css';
-import { FullWeatherListInfo } from '../../components/FullWeatherListInfo/FullWeatherListInfo';
-
 import styles from './View.module.css';
-
-import { ForecastType } from 'types/StateTypes';
 import { useAppSelector } from '../../hooks/useAppSelector';
+import { Forecast24Hours } from '../../components/forecast24hours/Forecast24Hours';
+import { HourlyForecastList } from '../../types/DayWeatherType';
+import { useActions } from '../../hooks/useActions';
+import { ForecastHeader } from '../../components/ForecastHeader/ForecastHeader';
+import { CountryStateType } from '../../types/StateTypes';
+import {
+  Legend,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 
 export const View = () => {
-  const { city } = useParams();
-  const forecast = useAppSelector<ForecastType>(state => state.weather.forecast[city!]);
+  const { city } = useParams<string>();
+  const meta = useAppSelector<CountryStateType>(
+    state => state.weather.forecast[city!]?.meta,
+  );
+  const list = useAppSelector<HourlyForecastList[]>(state => state.weather.longForecast);
+  const { requestLongForecast } = useActions();
 
-  const weatherIcon = forecast?.forecast.weather[0]?.icon
-    ? `http://openweathermap.org/img/wn/${forecast?.forecast.weather[0]?.icon}@2x.png`
-    : '';
+  const data = list.map(m => ({
+    subject: m.dt_txt.split(' ')[1],
+    temperature: `${m.main.temp}`,
+  }));
+
+  useEffect(() => {
+    requestLongForecast(city!);
+  }, []);
 
   return (
-    <div>
-      <div className={styles.container}>
-        <h2 className={generalStyles.cityName}>
-          {city}, {forecast?.meta?.name ? forecast?.meta?.name : ''},{' '}
-          <img
-            className={styles.flag}
-            src={forecast?.meta?.flags?.svg}
-            alt="Country flag"
-          />
-        </h2>
-        <div>
-          <img src={weatherIcon} alt="weather icon" />
-        </div>
-        <FullWeatherListInfo forecast={forecast?.forecast} />
-      </div>
+    <div className={styles.container}>
+      <ForecastHeader city={city || ''} meta={meta} />
+      <Forecast24Hours list={list} />
+      <h3> Temperature, &#8451;</h3>
+      <ResponsiveContainer width={'99%'} aspect={2}>
+        <LineChart data={data}>
+          <XAxis dataKey="subject" />
+          <Line dataKey="temperature" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+        </LineChart>
+      </ResponsiveContainer>
     </div>
   );
 };

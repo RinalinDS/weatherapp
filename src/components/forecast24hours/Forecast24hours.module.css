@@ -1,0 +1,64 @@
+.list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 3.6rem;
+  padding: 3rem;
+}
+.list li {
+  padding: 1.2rem;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+.imgcontainer {
+  display: flex;
+  justify-content: center;
+}
+
+.img {
+  width: 4rem;
+  height: 4rem;
+}
+
+thead {
+  font-size: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  font-weight: 600;
+}
+
+.tbody {
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+@media (max-width: 60em) {
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .recharts-responsive-container {
+    display: none;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 27em) {
+  .list {
+    padding: 0;
+  }
+}
