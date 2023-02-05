@@ -9,7 +9,7 @@ export type ForecastType = {
   meta: CountryStateType;
 };
 
-export type ThunkReturnType = {
+export type ForecastThunkReturnType = {
   forecast: CityWeatherType;
   city: string;
   meta?: CountryStateType;
