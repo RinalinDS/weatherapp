@@ -1,15 +1,21 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { setAppStatus } from './AppReducer';
+import { setAppError, setAppStatus } from './AppReducer';
 
 import { countryAPI, weatherAPI } from 'api/API';
-import { ForecastStateType, ForecastType, ThunkReturnType } from 'types/StateTypes';
+import {
+  ForecastStateType,
+  ForecastType,
+  ForecastThunkReturnType,
+} from 'types/StateTypes';
 import { RejectValueType } from 'types/UtilTypes';
 import { handleAsyncServerNetworkError } from 'utils/error-utils';
 import { AxiosError } from 'axios';
+import { AppDispatchType } from '../store';
+import { HourlyForecastList } from '../../types/DayWeatherType';
 
 export const requestCurrentWeather = createAsyncThunk<
-  ThunkReturnType,
+  ForecastThunkReturnType,
   { city: string; initRequest?: boolean },
   RejectValueType
 >('weather/requestCurrentWeather', async ({ city, initRequest = true }, thunkAPI) => {
@@ -38,11 +44,28 @@ export const requestCurrentWeather = createAsyncThunk<
   }
 });
 
+export const requestLongForecast =
+  (cityName: string) => async (dispatch: AppDispatchType) => {
+    try {
+      dispatch(setAppStatus({ status: 'loading' }));
+      const response = await weatherAPI.getFiveDayForecastInCity(cityName);
+      dispatch(setLongForecast(response.data.list));
+    } catch (e) {
+      const error = e as AxiosError<{ cod: string; message: string }>;
+      dispatch(
+        setAppError({ error: error?.response?.data?.message || 'Some error occured' }),
+      );
+    } finally {
+      dispatch(setAppStatus({ status: 'idle' }));
+    }
+  };
+
 const slice = createSlice({
   name: 'weather',
   initialState: {
     cities: [] as string[],
     forecast: {} as ForecastStateType,
+    longForecast: [] as HourlyForecastList[],
   },
   reducers: {
     deleteCity: (state, action: PayloadAction<string>) => {
@@ -56,6 +79,9 @@ const slice = createSlice({
         return;
       }
       state.cities.unshift(action.payload);
+    },
+    setLongForecast: (state, action: PayloadAction<HourlyForecastList[]>) => {
+      state.longForecast = action.payload;
     },
   },
   extraReducers: builder => {
@@ -71,8 +97,9 @@ const slice = createSlice({
   },
 });
 export const weatherActions = {
+  requestLongForecast,
   requestCurrentWeather,
   ...slice.actions,
 };
 export const weatherReducer = slice.reducer;
-export const { deleteCity, addNewCity } = slice.actions;
+export const { deleteCity, addNewCity, setLongForecast } = slice.actions;
