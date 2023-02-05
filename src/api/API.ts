@@ -2,6 +2,7 @@ import axios from 'axios';
 
 import { CityWeatherType } from 'types/APIWeatherType';
 import { CountryStateType } from 'types/StateTypes';
+import DayWeatherType from '../types/DayWeatherType';
 
 const weatherInstance = axios.create({
   baseURL: 'https://api.openweathermap.org/data/2.5/',
@@ -17,7 +18,9 @@ export const weatherAPI = {
     return weatherInstance.get<CityWeatherType>(`weather?q=${cityName}`, { params });
   },
   getFiveDayForecastInCity(cityName: string) {
-    return weatherInstance.get(`forecast?q=${cityName}`, { params });
+    return weatherInstance.get<DayWeatherType>(`forecast?q=${cityName}`, {
+      params: { ...params, cnt: 8 },
+    });
   },
 };
 
