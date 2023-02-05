@@ -5,16 +5,19 @@ import {
   weatherReducer,
 } from 'store/reducers/WeatherReducer';
 import { ForecastStateType } from 'types/StateTypes';
+import { HourlyForecastList } from '../types/DayWeatherType';
 
 let initialState: {
   cities: string[];
   forecast: ForecastStateType;
+  longForecast: HourlyForecastList[];
 };
 
 beforeEach(() => {
   initialState = {
     cities: ['Madrid', 'Kiev', 'Berlin'] as string[],
     forecast: {} as ForecastStateType,
+    longForecast: [] as HourlyForecastList[],
   };
 });
 
