@@ -14,11 +14,14 @@
   flex-direction: column;
   gap: 0.6rem;
   align-items: center;
+  margin-bottom: 1.2rem;
 }
 
 .imgcontainer {
   display: flex;
   justify-content: center;
+  background-color: #bbb;
+  border-radius: 9px;
 }
 
 .img {
@@ -44,10 +47,6 @@ thead {
 @media (max-width: 60em) {
   .list {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  .recharts-responsive-container {
-    display: none;
   }
 }
 
