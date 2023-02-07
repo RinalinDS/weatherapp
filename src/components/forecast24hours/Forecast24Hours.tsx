@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { HourlyForecastList } from '../../types/DayWeatherType';
 import styles from './Forecast24hours.module.css';
+import { ShortInfoList } from '../CityWeatherShortInfo/ShortInfoList/ShortInfoList';
 
 export const Forecast24Hours: FC<{ list: HourlyForecastList[] }> = props => {
   const { list } = props;
@@ -28,37 +29,14 @@ const Table: FC<{ element: HourlyForecastList }> = ({ element }) => {
     : '';
   return (
     <div>
-      <table>
-        <thead>
-          <tr className={styles.head}>
-            <th>{date}</th>
-            <th>{etime}</th>
-          </tr>
-        </thead>
-        <tbody className={styles.tbody}>
-          <tr className={styles.imgcontainer}>
-            <td>
-              <img src={weatherIcon} alt={'weather icon'} className={styles.img} />
-            </td>
-          </tr>
-          <tr>
-            <th>Temperature:</th>
-            <td>{element.main.temp} &#8451;</td>
-          </tr>
-          <tr>
-            <th>Feels like:</th>
-            <td>{element.main.feels_like} &#8451;</td>
-          </tr>
-          <tr>
-            <th>Pressure:</th>
-            <td>{element.main.pressure} Pa</td>
-          </tr>
-          <tr>
-            <th>Wind Speed:</th>
-            <td>{element.wind.speed} mp/h</td>
-          </tr>
-        </tbody>
-      </table>
+      <div className={styles.head}>
+        <div>{date}</div>
+        <div>{etime}</div>
+      </div>
+      <div className={styles.imgcontainer}>
+        <img src={weatherIcon} alt={'weather icon'} className={styles.img} />
+      </div>
+      <ShortInfoList forecastForCity={element} />
     </div>
   );
 };

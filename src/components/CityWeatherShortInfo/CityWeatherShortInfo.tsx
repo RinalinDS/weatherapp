@@ -34,7 +34,7 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
         <NavLink to={`/${city}`} className={styles.link}>
           <div className={styles.card}>
             <CardHeader city={city} setModalActive={setModalActive} />
-            <ShortInfoList forecastForCity={forecastForCity} />
+            <ShortInfoList forecastForCity={forecastForCity?.forecast} />
           </div>
         </NavLink>
         <div className={styles.buttonContainer}>
