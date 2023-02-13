@@ -11,6 +11,13 @@
   transition: all 400ms;
   min-width: 30rem;
 }
+.listDiv {
+  line-height: 1.8;
+}
+
+.list li {
+  font-size: 3rem;
+}
 
 .card:hover {
   transform: translateY(-1rem);

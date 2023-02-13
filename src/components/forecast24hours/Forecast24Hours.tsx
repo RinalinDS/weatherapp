@@ -36,7 +36,11 @@ const Table: FC<{ element: HourlyForecastList }> = ({ element }) => {
       <div className={styles.imgcontainer}>
         <img src={weatherIcon} alt={'weather icon'} className={styles.img} />
       </div>
-      <ShortInfoList forecastForCity={element} />
+      <div className={styles.listDiv}>
+        {' '}
+        {/*эта дивка , нужна чтобы от нее лист снизу мог унаследовать line-height*/}
+        <ShortInfoList forecastForCity={element} />
+      </div>
     </div>
   );
 };

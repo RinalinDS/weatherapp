@@ -11,6 +11,13 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  line-height: inherit; /* line height can be inherited or changed , while gap works only on flex-container, and can't be changed */
+}
+
+.list li {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .cityName {

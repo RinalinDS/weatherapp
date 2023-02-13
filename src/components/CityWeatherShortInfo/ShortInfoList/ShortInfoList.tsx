@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 
 import generalStyles from '../../../common/styles.module.css';
-import { ForecastType } from '../../../types/StateTypes';
 import { CityWeatherType } from '../../../types/APIWeatherType';
 import { HourlyForecastList } from '../../../types/DayWeatherType';
 
@@ -13,7 +12,10 @@ export const ShortInfoList: FC<ShortInfoListPropsType> = ({ forecastForCity }) =
   return (
     <ul className={generalStyles.list}>
       <li>
-        <b>Temperature:</b> {forecastForCity?.main?.temp}°C
+        <span>
+          <b>Temperature:</b>
+        </span>{' '}
+        <span>{forecastForCity?.main?.temp}°C</span>
       </li>
       <li>
         <b>Feels like:</b> {forecastForCity?.main?.feels_like}°C
