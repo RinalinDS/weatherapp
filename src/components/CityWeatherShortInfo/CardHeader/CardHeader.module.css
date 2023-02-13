@@ -5,9 +5,12 @@
   align-items: flex-start;
   margin-bottom: 2.4rem;
   max-width: 36rem;
-  gap: 2.4rem;
 }
 
-.button svg {
+.header button {
+  position: static;
+}
+
+.header button svg {
   font-size: 2.4rem;
 }

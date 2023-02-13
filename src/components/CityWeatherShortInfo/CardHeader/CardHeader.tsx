@@ -21,12 +21,7 @@ export const CardHeader: FC<CardHeaderPropsType> = ({ setModalActive, city }) =>
   return (
     <div className={styles.header}>
       <h1 className={generalStyles.cityName}>{city}</h1>
-      <IconButton
-        className={styles.button}
-        size="medium"
-        style={{ position: 'static' }}
-        onClick={callbackHandler}
-      >
+      <IconButton size="medium" onClick={callbackHandler}>
         <Delete fontSize="small" />
       </IconButton>
     </div>
