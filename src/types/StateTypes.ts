@@ -1,22 +1,22 @@
-import { CityWeatherType } from './APIWeatherType';
+import { CurrentForecastType } from './CurrentForecastType';
 
 export type ForecastStateType = {
-  [key: string]: ForecastType;
+  [key: string]: ForecastMetaType;
 };
 
-export type ForecastType = {
-  forecast: CityWeatherType;
-  meta: CountryStateType;
+export type ForecastMetaType = {
+  forecast: CurrentForecastType;
+  meta: MetaStateType;
 };
 
 export type ForecastThunkReturnType = {
-  forecast: CityWeatherType;
+  forecast: CurrentForecastType;
   city: string;
-  meta?: CountryStateType;
+  meta?: MetaStateType;
   initRequest?: boolean;
 };
 
-export type CountryStateType = {
+export type MetaStateType = {
   flags: {
     png: string;
     svg: string;
