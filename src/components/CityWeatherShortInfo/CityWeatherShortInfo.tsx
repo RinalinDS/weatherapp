@@ -1,6 +1,6 @@
 import React, { FC, memo, useState } from 'react';
 
-import { Button } from '@mui/material';
+import { Button, styled } from '@mui/material';
 import { NavLink } from 'react-router-dom';
 
 import { DeleteModal } from '../Modal/DeleteModal/DeleteModal';
@@ -16,6 +16,11 @@ type CityWeatherShortInfoPropsType = {
   forecastForCity: ForecastType;
   callback: (city: string) => void;
 };
+
+const CustomButton = styled(Button)(() => ({
+  position: 'static',
+  fontSize: '1.4rem',
+}));
 
 export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
   ({ city, callback, forecastForCity }) => {
@@ -40,14 +45,9 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
           </div>
         </NavLink>
         <div className={styles.buttonContainer}>
-          <Button
-            style={{ position: 'static', fontSize: '1.4rem' }}
-            variant="contained"
-            size="large"
-            onClick={updateCityWeather}
-          >
+          <CustomButton variant="contained" size="large" onClick={updateCityWeather}>
             Update
-          </Button>
+          </CustomButton>
         </div>
         <DeleteModal
           isModalActive={isModalActive}
