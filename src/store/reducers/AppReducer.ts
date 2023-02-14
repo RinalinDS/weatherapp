@@ -19,4 +19,3 @@ const slice = createSlice({
 });
 export const appActions = slice.actions;
 export const appReducer = slice.reducer;
-export const { setAppStatus, setAppError } = slice.actions;

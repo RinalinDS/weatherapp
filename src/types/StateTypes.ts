@@ -10,7 +10,7 @@ export type ForecastMetaType = {
 };
 
 export type ForecastThunkReturnType = {
-  forecast: CurrentForecastType;
+  currentForecast: CurrentForecastType;
   city: string;
   meta?: MetaStateType;
   initRequest?: boolean;

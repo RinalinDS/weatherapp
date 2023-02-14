@@ -24,14 +24,14 @@ const CustomButton = styled(Button)(() => ({
 
 export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
   ({ city, callback, forecastForCity }) => {
-    const { requestCurrentWeather } = useActions();
+    const { requestCurrentForecast } = useActions();
     const [isModalActive, setModalActive] = useState<boolean>(false);
 
     const confirmDeleteHandler = () => {
       callback(city);
     };
     const updateCityWeather = () => {
-      requestCurrentWeather({ city, initRequest: false });
+      requestCurrentForecast({ city, initRequest: false });
     };
 
     return (

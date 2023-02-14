@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 import generalStyles from '../../common/styles.module.css';
 import styles from '../../pages/View/View.module.css';
-import { CountryStateType } from '../../types/StateTypes';
+import { MetaStateType } from '../../types/StateTypes';
 
 type PropsType = {
   city: string;
-  meta: CountryStateType;
+  meta: MetaStateType;
 };
 
-export const ForecastHeader: FC<PropsType> = props => {
+export const DetailedForecastHeader: FC<PropsType> = props => {
   const { city, meta } = props;
   return (
     <h2 className={generalStyles.cityName}>

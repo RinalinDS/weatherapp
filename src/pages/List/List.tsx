@@ -9,22 +9,19 @@ import { selectCities, selectForecast } from 'store/selectors/WeatherSelectors';
 import { ForecastStateType } from 'types/StateTypes';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { useActions } from '../../hooks/useActions';
+import { getUpperCase } from '../../utils/getUpperCase';
 
 export const List: FC = () => {
-  const { requestCurrentWeather, deleteCity } = useActions();
+  // TODO Rename component
+  const { requestCurrentForecast, deleteCity } = useActions();
   const cities = useAppSelector<string[]>(selectCities);
   const forecast = useAppSelector<ForecastStateType>(selectForecast);
 
   const addNewCityHandler = useCallback(
     (city: string) => {
-      const cityWithUpperCase = city
-        .split(' ')
-        .map(m => m.charAt(0).toUpperCase() + m.slice(1).toLowerCase())
-        .join(' ');
-
-      requestCurrentWeather({ city: cityWithUpperCase });
+      requestCurrentForecast({ city: getUpperCase(city) });
     },
-    [requestCurrentWeather],
+    [requestCurrentForecast],
   );
   const deleteCityHandler = useCallback(
     (city: string): void => {

@@ -1,10 +1,18 @@
 import React, { FC } from 'react';
 
-import { AppBar, Button, Toolbar } from '@mui/material';
+import { AppBar, Button, styled, Toolbar } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 import generalStyles from '../../common/styles.module.css';
 import { Path } from '../../enum/Path';
+
+const HeaderToolbar = styled(Toolbar)(() => ({
+  display: 'flex',
+  justifyContent: 'space-between',
+}));
+const HeaderBar = styled(AppBar)(() => ({
+  background: '#2E3B55',
+}));
 
 export const Header: FC = () => {
   const navigate = useNavigate();
@@ -15,12 +23,13 @@ export const Header: FC = () => {
   };
 
   return (
-    <AppBar position="static" style={{ background: '#2E3B55' }}>
-      <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
+    <HeaderBar position="static">
+      <HeaderToolbar>
         <Button color="inherit" onClick={backHomeHandler}>
           <span className={generalStyles.text}>{buttonText}</span>
         </Button>
-      </Toolbar>
-    </AppBar>
+      </HeaderToolbar>
+      ;
+    </HeaderBar>
   );
 };

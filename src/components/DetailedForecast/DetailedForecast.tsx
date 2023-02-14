@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
-import { HourlyForecastList } from '../../types/DayWeatherType';
-import styles from './Forecast24hours.module.css';
+import { HourlyForecastList } from '../../types/DailyForecastType';
+import styles from './DetailedForecast.module.css';
 import { ShortInfoList } from '../CityWeatherShortInfo/ShortInfoList/ShortInfoList';
 
-export const Forecast24Hours: FC<{ list: HourlyForecastList[] }> = props => {
+export const DetailedForecast: FC<{ list: HourlyForecastList[] }> = props => {
   const { list } = props;
   return (
     <div>

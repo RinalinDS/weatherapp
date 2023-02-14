@@ -25,6 +25,7 @@ export const Modal: FC<ModalPropsType> = ({ children, setVisible, isModalActive 
       window.removeEventListener('keydown', onEscapeKeyHandler);
     };
   }, []);
+
   if (!isModalActive) return null;
 
   return (

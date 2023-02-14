@@ -27,7 +27,7 @@ Besides React, I used next libraries , that I felt were a good fit for the proje
 
 ## 2. How to Install and Run the Project
 
-After downloading source code, depending on package managers you're using you should:
+After downloading the source code, depending on package managers you're using you should:
 
 1. Install packages, with Yarn : `yarn install` or simply `yarn`; with NPM : `npm install`
 2. Start the project: `yarn start` , `npm start`
@@ -46,7 +46,7 @@ After downloading source code, depending on package managers you're using you sh
 ## 4. Roadmap
 
 - [x] Make working MVP;
-- [ ] Expand functionality by including the ability to get a 5-day forecast for a particular city;
+- [x] Expand functionality by including the ability to get a 24hr forecast for a particular city;
 
 ## 5. License
 

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import styles from './View.module.css';
 import { useAppSelector } from '../../hooks/useAppSelector';
-import { DetailedForecast } from '../../components/forecast24hours/DetailedForecast';
+import { DetailedForecast } from '../../components/DetailedForecast/DetailedForecast';
 import { useActions } from '../../hooks/useActions';
 import { DetailedForecastHeader } from '../../components/ForecastHeader/ForecastHeader';
 import {
@@ -18,10 +18,10 @@ export const View = () => {
   const meta = useAppSelector(state => selectCityMeta(state, city!));
   const list = useAppSelector(selectLongForecast);
   // basically dispatch(requestLongForecast)  but dispatch hidden inside.
-  const { requestLongForecast } = useActions();
+  const { requestDailyForecast } = useActions();
 
   useEffect(() => {
-    requestLongForecast(city!);
+    requestDailyForecast({ cityName: city! });
   }, []);
 
   return (

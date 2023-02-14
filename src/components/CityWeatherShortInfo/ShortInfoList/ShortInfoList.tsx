@@ -1,11 +1,11 @@
 import React, { FC } from 'react';
 
 import generalStyles from '../../../common/styles.module.css';
-import { CityWeatherType } from '../../../types/APIWeatherType';
-import { HourlyForecastList } from '../../../types/DayWeatherType';
+import { CurrentForecastType } from '../../../types/CurrentForecastType';
+import { HourlyForecastList } from '../../../types/DailyForecastType';
 
 type ShortInfoListPropsType = {
-  forecastForCity: CityWeatherType | HourlyForecastList;
+  forecastForCity: CurrentForecastType | HourlyForecastList;
 };
 
 export const ShortInfoList: FC<ShortInfoListPropsType> = ({ forecastForCity }) => {

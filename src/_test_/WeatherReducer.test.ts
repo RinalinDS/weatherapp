@@ -1,7 +1,6 @@
 import {
-  addNewCity,
-  deleteCity,
-  requestCurrentWeather,
+  requestCurrentForecast,
+  weatherActions,
   weatherReducer,
 } from 'store/reducers/WeatherReducer';
 import { ForecastStateType } from 'types/StateTypes';
@@ -9,27 +8,27 @@ import { HourlyForecastList } from '../types/DailyForecastType';
 
 let initialState: {
   cities: string[];
-  forecast: ForecastStateType;
-  longForecast: HourlyForecastList[];
+  currentForecast: ForecastStateType;
+  dailyForecast: HourlyForecastList[];
 };
 
 beforeEach(() => {
   initialState = {
     cities: ['Madrid', 'Kiev', 'Berlin'] as string[],
-    forecast: {} as ForecastStateType,
-    longForecast: [] as HourlyForecastList[],
+    currentForecast: {} as ForecastStateType,
+    dailyForecast: [] as HourlyForecastList[],
   };
 });
 
 test('correct city should be deleted', () => {
-  const endState = weatherReducer(initialState, deleteCity('Madrid'));
+  const endState = weatherReducer(initialState, weatherActions.deleteCity('Madrid'));
 
   expect(endState.cities.length).toBe(2);
   expect(endState.cities[0]).toBe('Kiev');
 });
 
 test('correct city should be added', () => {
-  const endState = weatherReducer(initialState, addNewCity('Moscow'));
+  const endState = weatherReducer(initialState, weatherActions.addNewCity('Moscow'));
 
   expect(endState.cities.length).toBe(4);
   expect(endState.cities[0]).toBe('Moscow');
@@ -72,9 +71,9 @@ test('current forecast for city should be added', () => {
 
   const endState = weatherReducer(
     initialState,
-    requestCurrentWeather.fulfilled(
+    requestCurrentForecast.fulfilled(
       {
-        forecast: odessaForecast,
+        currentForecast: odessaForecast,
         city,
         meta: {
           name: 'Ukraine',
@@ -90,8 +89,8 @@ test('current forecast for city should be added', () => {
     ),
   );
 
-  expect(endState.forecast[city]).toBeDefined();
-  expect(endState.forecast[city].forecast.id).toBe(698740);
+  expect(endState.currentForecast[city]).toBeDefined();
+  expect(endState.currentForecast[city].forecast.id).toBe(698740);
 });
 
 // TODO Add test for another thunk

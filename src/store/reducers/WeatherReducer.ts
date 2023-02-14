@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { setAppError, setAppStatus } from './AppReducer';
+import { appActions } from './AppReducer';
 
 import { countryAPI, weatherAPI } from 'api/API';
 import {
@@ -11,68 +11,66 @@ import {
 import { RejectValueType } from 'types/UtilTypes';
 import { handleAsyncServerNetworkError } from 'utils/error-utils';
 import { AxiosError } from 'axios';
-import { AppDispatchType } from '../store';
 import { HourlyForecastList } from '../../types/DailyForecastType';
 
-export const requestCurrentWeather = createAsyncThunk<
+export const requestCurrentForecast = createAsyncThunk<
   ForecastThunkReturnType,
   { city: string; initRequest?: boolean },
   RejectValueType
 >('weather/requestCurrentWeather', async ({ city, initRequest = true }, thunkAPI) => {
   const { dispatch } = thunkAPI;
-
   try {
-    dispatch(setAppStatus({ status: 'loading' }));
+    dispatch(appActions.setAppStatus({ status: 'loading' }));
     const { data } = await weatherAPI.getCurrentWeatherInCity(city);
-
     if (initRequest) {
       const { data: meta } = await countryAPI.getCountryInfoByCity(data?.sys?.country);
-
-      dispatch(addNewCity(city));
-
-      return { forecast: data, city, meta, initRequest };
+      dispatch(weatherActions.addNewCity(city));
+      return { currentForecast: data, city, meta, initRequest };
     }
-
-    return { forecast: data, city };
+    return { currentForecast: data, city };
   } catch (e) {
     return handleAsyncServerNetworkError(
       (e as AxiosError<{ cod: string; message: string }>)?.response?.data?.message,
       thunkAPI,
     );
   } finally {
-    dispatch(setAppStatus({ status: 'idle' }));
+    dispatch(appActions.setAppStatus({ status: 'idle' }));
   }
 });
 
-export const requestLongForecast =
-  (cityName: string) => async (dispatch: AppDispatchType) => {
-    try {
-      dispatch(setAppStatus({ status: 'loading' }));
-      const response = await weatherAPI.getFiveDayForecastInCity(cityName);
-      dispatch(setLongForecast(response.data.list));
-    } catch (e) {
-      const error = e as AxiosError<{ cod: string; message: string }>;
-      dispatch(
-        setAppError({ error: error?.response?.data?.message || 'Some error occured' }),
-      );
-    } finally {
-      dispatch(setAppStatus({ status: 'idle' }));
-    }
-  };
+export const requestDailyForecast = createAsyncThunk<
+  HourlyForecastList[],
+  { cityName: string },
+  RejectValueType
+>('weather/requestLongForecast', async ({ cityName }, thunkAPI) => {
+  const { dispatch } = thunkAPI;
+  try {
+    dispatch(appActions.setAppStatus({ status: 'loading' }));
+    const response = await weatherAPI.getFiveDayForecastInCity(cityName);
+    return response.data.list;
+  } catch (e) {
+    return handleAsyncServerNetworkError(
+      (e as AxiosError<{ cod: string; message: string }>)?.response?.data?.message,
+      thunkAPI,
+    );
+  } finally {
+    dispatch(appActions.setAppStatus({ status: 'idle' }));
+  }
+});
 
 const slice = createSlice({
   name: 'weather',
   initialState: {
     cities: [] as string[],
-    forecast: {} as ForecastStateType,
-    longForecast: [] as HourlyForecastList[],
+    currentForecast: {} as ForecastStateType,
+    dailyForecast: [] as HourlyForecastList[],
   },
   reducers: {
     deleteCity: (state, action: PayloadAction<string>) => {
       const index = state.cities.findIndex(s => s === action.payload);
 
       state.cities.splice(index, 1);
-      delete state.forecast[action.payload];
+      delete state.currentForecast[action.payload];
     },
     addNewCity: (state, action: PayloadAction<string>) => {
       if (state.cities.find(f => f === action.payload)) {
@@ -80,26 +78,28 @@ const slice = createSlice({
       }
       state.cities.unshift(action.payload);
     },
-    setLongForecast: (state, action: PayloadAction<HourlyForecastList[]>) => {
-      state.longForecast = action.payload;
-    },
   },
   extraReducers: builder => {
-    builder.addCase(requestCurrentWeather.fulfilled, (state, action) => {
-      if (action.payload.initRequest && action.payload.meta) {
-        state.forecast[action.payload.city] = {} as ForecastMetaType;
-        state.forecast[action.payload.city].forecast = action.payload.forecast;
-        state.forecast[action.payload.city].meta = action.payload.meta;
-      } else {
-        state.forecast[action.payload.city].forecast = action.payload.forecast;
-      }
-    });
+    builder
+      .addCase(requestCurrentForecast.fulfilled, (state, action) => {
+        if (action.payload.initRequest && action.payload.meta) {
+          state.currentForecast[action.payload.city] = {} as ForecastMetaType;
+          state.currentForecast[action.payload.city].forecast =
+            action.payload.currentForecast;
+          state.currentForecast[action.payload.city].meta = action.payload.meta;
+        } else {
+          state.currentForecast[action.payload.city].forecast =
+            action.payload.currentForecast;
+        }
+      })
+      .addCase(requestDailyForecast.fulfilled, (state, action) => {
+        state.dailyForecast = action.payload;
+      });
   },
 });
 export const weatherActions = {
-  requestLongForecast,
-  requestCurrentWeather,
+  requestDailyForecast,
+  requestCurrentForecast,
   ...slice.actions,
 };
 export const weatherReducer = slice.reducer;
-export const { deleteCity, addNewCity, setLongForecast } = slice.actions;

@@ -21,10 +21,10 @@
 }
 
 .imgcontainer {
-  display: flex;
-  justify-content: center;
+  text-align: center;
   background-color: #bbb;
   border-radius: 9px;
+  margin-bottom: 0.8rem;
 }
 
 .img {
