@@ -4,18 +4,20 @@ import { useParams } from 'react-router-dom';
 
 import styles from './View.module.css';
 import { useAppSelector } from '../../hooks/useAppSelector';
-import { Forecast24Hours } from '../../components/forecast24hours/Forecast24Hours';
-import { HourlyForecastList } from '../../types/DayWeatherType';
+import { DetailedForecast } from '../../components/forecast24hours/DetailedForecast';
 import { useActions } from '../../hooks/useActions';
-import { ForecastHeader } from '../../components/ForecastHeader/ForecastHeader';
-import { CountryStateType } from '../../types/StateTypes';
+import { DetailedForecastHeader } from '../../components/ForecastHeader/ForecastHeader';
+import {
+  selectCityMeta,
+  selectLongForecast,
+} from '../../store/selectors/WeatherSelectors';
 
 export const View = () => {
+  // TODO Rename component
   const { city } = useParams<string>();
-  const meta = useAppSelector<CountryStateType>(
-    state => state.weather.forecast[city!]?.meta,
-  );
-  const list = useAppSelector<HourlyForecastList[]>(state => state.weather.longForecast);
+  const meta = useAppSelector(state => selectCityMeta(state, city!));
+  const list = useAppSelector(selectLongForecast);
+  // basically dispatch(requestLongForecast)  but dispatch hidden inside.
   const { requestLongForecast } = useActions();
 
   useEffect(() => {
@@ -24,8 +26,8 @@ export const View = () => {
 
   return (
     <div className={styles.container}>
-      <ForecastHeader city={city || ''} meta={meta} />
-      <Forecast24Hours list={list} />
+      <DetailedForecastHeader city={city || ''} meta={meta} />
+      <DetailedForecast list={list} />
     </div>
   );
 };
