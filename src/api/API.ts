@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-import { CityWeatherType } from 'types/APIWeatherType';
-import { CountryStateType } from 'types/StateTypes';
-import DayWeatherType from '../types/DayWeatherType';
+import { CurrentForecastType } from 'types/CurrentForecastType';
+import { MetaStateType } from 'types/StateTypes';
+import { DailyForecastType } from '../types/DailyForecastType';
 
 const weatherInstance = axios.create({
   baseURL: 'https://api.openweathermap.org/data/2.5/',
@@ -15,10 +15,10 @@ const params = {
 
 export const weatherAPI = {
   getCurrentWeatherInCity(cityName: string) {
-    return weatherInstance.get<CityWeatherType>(`weather?q=${cityName}`, { params });
+    return weatherInstance.get<CurrentForecastType>(`weather?q=${cityName}`, { params });
   },
   getFiveDayForecastInCity(cityName: string) {
-    return weatherInstance.get<DayWeatherType>(`forecast?q=${cityName}`, {
+    return weatherInstance.get<DailyForecastType>(`forecast?q=${cityName}`, {
       params: { ...params, cnt: 8 },
     });
   },
@@ -26,7 +26,7 @@ export const weatherAPI = {
 
 export const countryAPI = {
   getCountryInfoByCity(code: string) {
-    return axios.get<CountryStateType>(
+    return axios.get<MetaStateType>(
       `https://restcountries.com/v2/alpha/${code}?fields=flags,name`,
     );
   },

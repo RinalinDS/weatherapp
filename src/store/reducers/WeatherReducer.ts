@@ -4,15 +4,15 @@ import { setAppError, setAppStatus } from './AppReducer';
 
 import { countryAPI, weatherAPI } from 'api/API';
 import {
+  ForecastMetaType,
   ForecastStateType,
-  ForecastType,
   ForecastThunkReturnType,
 } from 'types/StateTypes';
 import { RejectValueType } from 'types/UtilTypes';
 import { handleAsyncServerNetworkError } from 'utils/error-utils';
 import { AxiosError } from 'axios';
 import { AppDispatchType } from '../store';
-import { HourlyForecastList } from '../../types/DayWeatherType';
+import { HourlyForecastList } from '../../types/DailyForecastType';
 
 export const requestCurrentWeather = createAsyncThunk<
   ForecastThunkReturnType,
@@ -87,7 +87,7 @@ const slice = createSlice({
   extraReducers: builder => {
     builder.addCase(requestCurrentWeather.fulfilled, (state, action) => {
       if (action.payload.initRequest && action.payload.meta) {
-        state.forecast[action.payload.city] = {} as ForecastType;
+        state.forecast[action.payload.city] = {} as ForecastMetaType;
         state.forecast[action.payload.city].forecast = action.payload.forecast;
         state.forecast[action.payload.city].meta = action.payload.meta;
       } else {

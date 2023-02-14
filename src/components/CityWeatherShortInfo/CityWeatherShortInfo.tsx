@@ -8,12 +8,12 @@ import { DeleteModal } from '../Modal/DeleteModal/DeleteModal';
 import CardHeader from './CardHeader/CardHeader';
 import styles from './CityWeatherShortInfo.module.css';
 import { ShortInfoList } from './ShortInfoList/ShortInfoList';
-import { ForecastType } from 'types/StateTypes';
+import { ForecastMetaType } from 'types/StateTypes';
 import { useActions } from '../../hooks/useActions';
 
 type CityWeatherShortInfoPropsType = {
   city: string;
-  forecastForCity: ForecastType;
+  forecastForCity: ForecastMetaType;
   callback: (city: string) => void;
 };
 

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
+import { ContactType } from 'types/UtilTypes';
 import styles from '../footer.module.css';
-import { ContactType } from '../footer';
 
 type CustomListPropsType = {
   items: ContactType[];

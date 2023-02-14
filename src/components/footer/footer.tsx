@@ -1,47 +1,11 @@
 import React, { FC } from 'react';
 import styles from './footer.module.css';
 import generalStyles from './../../common/styles.module.css';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TelegramIcon from '@mui/icons-material/Telegram';
-import GitHubIcon from '@mui/icons-material/GitHub';
 import logo from './../../assets/logo.jpg';
 import { CustomList } from './CustomList/CustomList';
+import { contactItems, ResourcesList } from '../../utils/data';
 
-type FooterPropsType = {
-  isListEmpty: boolean;
-};
-
-export type ContactType = {
-  href: string;
-  text: string;
-  icon?: React.ReactNode;
-};
-
-const contactItems: ContactType[] = [
-  {
-    href: 'https://t.me/RinalinDS',
-    text: 'Write to me in',
-    icon: <TelegramIcon fontSize="large" />,
-  },
-  {
-    href: 'https://www.linkedin.com/in/denis-pilyutin-647514197/',
-    text: `Connect with me via`,
-    icon: <LinkedInIcon fontSize="large" />,
-  },
-  {
-    href: 'https://github.com/RinalinDS',
-    text: `Watch source code on`,
-    icon: <GitHubIcon fontSize="large" />,
-  },
-];
-
-const ResourcesList = [
-  { href: '#', text: 'About' },
-  { href: '#', text: 'Careers' },
-  { href: '#', text: 'For Business' },
-];
-
-export const Footer: FC<FooterPropsType> = ({ isListEmpty }) => {
+export const Footer: FC<{ isListEmpty: boolean }> = ({ isListEmpty }) => {
   const footerStyle = `${styles.footer} ${
     isListEmpty ? styles.footerFixed : styles.footerNotFixed
   }`;

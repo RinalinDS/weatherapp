@@ -1,7 +1,7 @@
 import { AppRootStateType } from '../store';
 
-import { CountryStateType, ForecastStateType } from 'types/StateTypes';
-import { HourlyForecastList } from '../../types/DayWeatherType';
+import { MetaStateType, ForecastStateType } from 'types/StateTypes';
+import { HourlyForecastList } from '../../types/DailyForecastType';
 import { createSelector } from '@reduxjs/toolkit';
 
 export const selectCities = (state: AppRootStateType): string[] => state.weather.cities;
@@ -13,6 +13,6 @@ export const selectLongForecast = (state: AppRootStateType): HourlyForecastList[
 export const selectCityMeta = createSelector(
   [selectForecast, (_, city) => ({ city })],
   (forecast, { city }) => {
-    return forecast[city]?.meta || ({} as CountryStateType);
+    return forecast[city]?.meta || ({} as MetaStateType);
   },
 );

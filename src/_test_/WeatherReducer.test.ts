@@ -5,7 +5,7 @@ import {
   weatherReducer,
 } from 'store/reducers/WeatherReducer';
 import { ForecastStateType } from 'types/StateTypes';
-import { HourlyForecastList } from '../types/DayWeatherType';
+import { HourlyForecastList } from '../types/DailyForecastType';
 
 let initialState: {
   cities: string[];
@@ -24,7 +24,6 @@ beforeEach(() => {
 test('correct city should be deleted', () => {
   const endState = weatherReducer(initialState, deleteCity('Madrid'));
 
-  // eslint-disable-next-line no-magic-numbers
   expect(endState.cities.length).toBe(2);
   expect(endState.cities[0]).toBe('Kiev');
 });
@@ -32,14 +31,12 @@ test('correct city should be deleted', () => {
 test('correct city should be added', () => {
   const endState = weatherReducer(initialState, addNewCity('Moscow'));
 
-  // eslint-disable-next-line no-magic-numbers
   expect(endState.cities.length).toBe(4);
   expect(endState.cities[0]).toBe('Moscow');
-  // eslint-disable-next-line no-magic-numbers
   expect(endState.cities[3]).toBe('Berlin');
 });
 
-test('forecast for city should be added', () => {
+test('current forecast for city should be added', () => {
   const odessaForecast = {
     coord: { lon: 30.7326, lat: 46.4775 },
     weather: [
@@ -94,6 +91,7 @@ test('forecast for city should be added', () => {
   );
 
   expect(endState.forecast[city]).toBeDefined();
-  // eslint-disable-next-line no-magic-numbers
   expect(endState.forecast[city].forecast.id).toBe(698740);
 });
+
+// TODO Add test for another thunk
