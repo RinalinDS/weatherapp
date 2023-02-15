@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import generalStyles from '../../common/styles.module.css';
-import styles from '../../pages/View/View.module.css';
+import styles from '../../pages/DetailedPage/DetailedPage.module.css';
 import { MetaStateType } from '../../types/StateTypes';
 
 type PropsType = {

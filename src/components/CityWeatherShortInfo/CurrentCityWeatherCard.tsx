@@ -22,7 +22,7 @@ const CustomButton = styled(Button)(() => ({
   fontSize: '1.4rem',
 }));
 
-export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
+export const CityCurrentWeatherCard: FC<CityWeatherShortInfoPropsType> = memo(
   ({ city, callback, forecastForCity }) => {
     const { requestCurrentForecast } = useActions();
     const [isModalActive, setModalActive] = useState<boolean>(false);
@@ -40,6 +40,7 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
           <div className={styles.card}>
             <CardHeader city={city} setModalActive={setModalActive} />
             <div className={styles.listDiv}>
+              {/*i need this div above to inherit line height from it*/}
               <ShortInfoList forecastForCity={forecastForCity?.forecast} />
             </div>
           </div>
@@ -53,6 +54,7 @@ export const CityWeatherShortInfo: FC<CityWeatherShortInfoPropsType> = memo(
           isModalActive={isModalActive}
           confirmDeleteHandler={confirmDeleteHandler}
           setModalActive={setModalActive}
+          text={'Are you sure you want to delete this city?'}
         />
       </>
     );

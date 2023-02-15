@@ -3,19 +3,17 @@ import React, { FC, useCallback } from 'react';
 import { Grid } from '@mui/material';
 
 import { AddItemForm } from 'components/AddItemForm/AddItemForm';
-import { CityWeatherShortInfo } from 'components/CityWeatherShortInfo/CityWeatherShortInfo';
-import styles from 'pages/List/List.module.css';
+import { CityCurrentWeatherCard } from 'components/CityWeatherShortInfo/CurrentCityWeatherCard';
+import styles from 'pages/List/MainPage.module.css';
 import { selectCities, selectForecast } from 'store/selectors/WeatherSelectors';
-import { ForecastStateType } from 'types/StateTypes';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { useActions } from '../../hooks/useActions';
 import { getUpperCase } from '../../utils/getUpperCase';
 
-export const List: FC = () => {
-  // TODO Rename component
+export const MainPage: FC = () => {
   const { requestCurrentForecast, deleteCity } = useActions();
-  const cities = useAppSelector<string[]>(selectCities);
-  const forecast = useAppSelector<ForecastStateType>(selectForecast);
+  const cities = useAppSelector(selectCities);
+  const forecast = useAppSelector(selectForecast);
 
   const addNewCityHandler = useCallback(
     (city: string) => {
@@ -35,17 +33,23 @@ export const List: FC = () => {
       <div className={styles.addItemForm}>
         <AddItemForm callBack={addNewCityHandler} />
       </div>
-      <div className={styles.cityContainer}>
-        {cities.map(cityName => (
-          <Grid key={cityName} item>
-            <CityWeatherShortInfo
-              city={cityName}
-              forecastForCity={forecast[cityName]}
-              callback={deleteCityHandler}
-            />
-          </Grid>
-        ))}
-      </div>
+      {cities.length > 0 ? (
+        <div className={styles.cityContainer}>
+          {cities.map(cityName => (
+            <Grid key={cityName} item>
+              <CityCurrentWeatherCard
+                city={cityName}
+                forecastForCity={forecast[cityName]}
+                callback={deleteCityHandler}
+              />
+            </Grid>
+          ))}
+        </div>
+      ) : (
+        <div className={styles.emptyContainer}>
+          There are no cities in list try to add some!
+        </div>
+      )}
     </>
   );
 };

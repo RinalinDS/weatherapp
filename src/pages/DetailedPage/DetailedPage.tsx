@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 
 import { useParams } from 'react-router-dom';
 
-import styles from './View.module.css';
+import styles from './DetailedPage.module.css';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { DetailedForecast } from '../../components/DetailedForecast/DetailedForecast';
 import { useActions } from '../../hooks/useActions';
