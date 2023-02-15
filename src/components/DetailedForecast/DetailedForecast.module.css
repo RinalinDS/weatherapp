@@ -6,49 +6,9 @@
   padding: 3rem;
   font-size: 1.4rem;
 }
+
 .list li {
   padding: 0.6rem 1.2rem;
-}
-
-.head {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  align-items: center;
-  margin-bottom: 1.2rem;
-  font-size: 1.6rem;
-  font-weight: 600;
-}
-
-.imgcontainer {
-  text-align: center;
-  background-color: #bbb;
-  border-radius: 9px;
-  margin-bottom: 0.8rem;
-}
-
-.img {
-  width: 4rem;
-  height: 4rem;
-}
-
-thead {
-  font-size: 1.6rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  font-weight: 600;
-}
-
-.tbody {
-  font-size: 1.4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-}
-
-.listDiv {
-  line-height: 1.2;
 }
 
 @media (max-width: 60em) {
@@ -65,6 +25,6 @@ thead {
 
 @media (max-width: 27em) {
   .list {
-    padding: 0;
+    padding: 1.6rem 0;
   }
 }

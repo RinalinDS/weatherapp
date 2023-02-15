@@ -1,11 +1,5 @@
-/*.loader {*/
-/*    display: flex;*/
-/*    justify-content: center;*/
-/*    align-items: center;*/
-/*    font-size: 4.4rem;*/
-/*}*/
-
-/*.text {*/
-/*    font-size: 1.6rem;*/
-/*    font-weight: 400;*/
-/*}*/
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

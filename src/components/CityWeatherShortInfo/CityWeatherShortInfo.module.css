@@ -9,7 +9,8 @@
   border-radius: 11px;
   padding: 2.4rem 3.6rem;
   transition: all 400ms;
-  min-width: 30rem;
+  min-width: 27rem;
+  max-width: 36rem;
 }
 .listDiv {
   line-height: 1.8;

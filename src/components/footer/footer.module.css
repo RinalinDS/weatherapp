@@ -1,17 +1,6 @@
 .footer {
   border-top: 1px solid #eeeeee;
-  padding: 6.4rem 0 3.2rem;
-}
-
-.footerNotFixed {
-  margin-top: 6.4rem;
-}
-
-.footerFixed {
-  position: fixed;
-  width: 100%;
-  left: 0;
-  bottom: 0;
+  padding: 3.2rem 0;
 }
 
 .grid {
@@ -19,9 +8,6 @@
   grid-template-columns: repeat(3, 1fr);
   justify-items: center;
   gap: 2.4rem;
-}
-
-.contacts {
 }
 
 .title {

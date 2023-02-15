@@ -11,11 +11,12 @@ import { Footer } from './components/footer/footer';
 import { useAppSelector } from './hooks/useAppSelector';
 import { useActions } from './hooks/useActions';
 import { Preloader } from './components/Preloader/Preloader';
+import styles from './App.module.css';
 
 export const App: FC = () => {
   const { requestCurrentForecast } = useActions();
-  const status = useAppSelector<RequestStatusType>(selectStatus);
-  const cities = useAppSelector<string[]>(selectCities);
+  const status = useAppSelector(selectStatus);
+  const cities = useAppSelector(selectCities);
 
   const [isInitLoading, setIsInitLoading] = useState(true);
 
@@ -27,12 +28,12 @@ export const App: FC = () => {
   if (isInitLoading) return <Preloader />;
 
   return (
-    <div>
-      <Header />
+    <div className={styles.container}>
+      <Header isButtonVisible={cities.length > 0} />
       {status === 'loading' && <LinearProgress color="secondary" />}
       <RoutesComponent />
       <ErrorSnackbar />
-      <Footer isListEmpty={cities.length === 0} />
+      <Footer />
     </div>
   );
 };

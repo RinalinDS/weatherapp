@@ -12,19 +12,28 @@ export const ShortInfoList: FC<ShortInfoListPropsType> = ({ forecastForCity }) =
   return (
     <ul className={generalStyles.list}>
       <li>
-        <span>
-          <b>Temperature:</b>
-        </span>{' '}
-        <span>{forecastForCity?.main?.temp}°C</span>
+        <b>Temperature:</b>
+        <span className={generalStyles.padding}>
+          {Math.round(forecastForCity?.main?.temp)} °C
+        </span>
       </li>
       <li>
-        <b>Feels like:</b> {forecastForCity?.main?.feels_like}°C
+        <b>Feels like:</b>
+        <span className={generalStyles.padding}>
+          {Math.round(forecastForCity?.main?.feels_like)} °C
+        </span>
       </li>
       <li>
-        <b>Wind speed:</b> {forecastForCity?.wind?.speed} m/s
+        <b>Wind speed:</b>
+        <span className={generalStyles.padding}>
+          {Math.round(forecastForCity?.wind?.speed)} m/s
+        </span>
       </li>
       <li>
-        <b>Pressure:</b> {forecastForCity?.main?.pressure} mm
+        <b>Pressure:</b>
+        <span className={generalStyles.padding}>
+          {Math.round(forecastForCity?.main?.pressure)} mm
+        </span>
       </li>
     </ul>
   );

@@ -10,6 +10,7 @@ type DeleteModalPropsType = {
   isModalActive: boolean;
   confirmDeleteHandler: () => void;
   setModalActive: (value: boolean) => void;
+  text: string;
 };
 const CustomButton = styled(Button)(() => ({
   position: 'static',
@@ -19,12 +20,13 @@ export const DeleteModal: FC<DeleteModalPropsType> = ({
   isModalActive,
   confirmDeleteHandler,
   setModalActive,
+  text,
 }) => {
   const onCancelClickHandler = () => setModalActive(false);
 
   return (
     <Modal setVisible={setModalActive} isModalActive={isModalActive}>
-      <div className={styles.modalTitle}>Are you sure you want to delete this city?</div>
+      <div className={styles.modalTitle}>{text}</div>
       <div className={styles.modalButtonsContainer}>
         <CustomButton
           color="primary"

@@ -1,0 +1,43 @@
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.imgContainer {
+  text-align: center;
+  background-color: #bbb;
+  border-radius: 9px;
+  margin-bottom: 0.8rem;
+}
+
+.img {
+  width: 4rem;
+  height: 4rem;
+}
+
+.helper {
+  line-height: 1.2;
+}
+
+@media (max-width: 60em) {
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 37.5em) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 27em) {
+  .list {
+    padding: 1.6rem 0;
+  }
+}

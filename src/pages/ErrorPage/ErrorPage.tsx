@@ -6,7 +6,6 @@ import styles from './ErrorPage.module.css';
 
 export const ErrorPage = () => {
   const navigate = useNavigate();
-  // eslint-disable-next-line no-magic-numbers
   const backOneLevelHandler = () => navigate(-2);
   const ErrorText = `Someone made a mistake, press Home or`;
 

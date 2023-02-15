@@ -5,12 +5,9 @@ import logo from './../../assets/logo.jpg';
 import { CustomList } from './CustomList/CustomList';
 import { contactItems, ResourcesList } from '../../utils/data';
 
-export const Footer: FC<{ isListEmpty: boolean }> = ({ isListEmpty }) => {
-  const footerStyle = `${styles.footer} ${
-    isListEmpty ? styles.footerFixed : styles.footerNotFixed
-  }`;
+export const Footer: FC = () => {
   return (
-    <footer className={footerStyle}>
+    <footer className={styles.footer}>
       <div className={generalStyles.container}>
         <div className={styles.grid}>
           <div className={styles.logoColumn}>
