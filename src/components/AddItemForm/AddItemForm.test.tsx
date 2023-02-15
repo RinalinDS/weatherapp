@@ -12,11 +12,11 @@ test('form has some button', () => {
 
 test('form has some text', () => {
   render(<AddItemForm callBack={callback} />);
-  expect(screen.getAllByText(/City/i)).toBeInTheDocument();
+  expect(screen.getAllByText(/City name/i)).toBeDefined();
 });
 
 test('AddItemForm snapshot', () => {
-  const form = render(<AddItemForm callBack={callback} />);
+  const component = render(<AddItemForm callBack={callback} />);
 
-  expect(form).toMatchSnapshot();
+  expect(component).toMatchSnapshot();
 });

@@ -4,15 +4,12 @@
   align-items: center;
 }
 
-.textField label {
-  font-size: 1.6rem;
-}
-.textField input {
-  font-size: 1.6rem;
-}
+.textField label,
+.textField input,
 .textField span {
   font-size: 1.6rem;
 }
+
 .textField p {
   font-size: 0.9rem;
 }
