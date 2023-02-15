@@ -42,7 +42,7 @@ export const requestDailyForecast = createAsyncThunk<
   HourlyForecastList[],
   { cityName: string },
   RejectValueType
->('weather/requestLongForecast', async ({ cityName }, thunkAPI) => {
+>('weather/requestDailyForecast', async ({ cityName }, thunkAPI) => {
   const { dispatch } = thunkAPI;
   try {
     dispatch(appActions.setAppStatus({ status: 'loading' }));
@@ -77,6 +77,11 @@ const slice = createSlice({
         return;
       }
       state.cities.unshift(action.payload);
+    },
+    clearData: state => {
+      state.currentForecast = {};
+      state.cities = [];
+      state.dailyForecast = [];
     },
   },
   extraReducers: builder => {
