@@ -12,8 +12,7 @@ import {
   selectLongForecast,
 } from '../../store/selectors/WeatherSelectors';
 
-export const View = () => {
-  // TODO Rename component
+export const DetailedPage = () => {
   const { city } = useParams<string>();
   const meta = useAppSelector(state => selectCityMeta(state, city!));
   const list = useAppSelector(selectLongForecast);
