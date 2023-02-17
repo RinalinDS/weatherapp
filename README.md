@@ -1,5 +1,7 @@
 # Rinalin's Weather Forecast Application
 
+## [Deployment](https://rinalinds.github.io/weatherapp/)
+
 ## 1. Project Description
 
 Rinalin's Weather Forecast application is a simple yet powerful tool built with React, allowing users to easily view
@@ -42,6 +44,8 @@ After downloading the source code, depending on package managers you're using yo
 4. For detailed info you can click on card it will send you to another page.
 5. To get back from detailed info use 'Home' button in Header.
 6. Cities array will be saved in local storage, so on page reload you will get the same results.
+7. You can delete cities one by one , or you can you 'clear list' button at the top right. It will appear after will add
+   your first title.
 
 ## 4. Roadmap
 
