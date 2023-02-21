@@ -8,6 +8,14 @@ export const useDetailedForecastListData = (element: HourlyForecastList) => {
   let etime = time.slice(0, -3);
   // to cut seconds
 
+  // SOMEDAY I'LL MAKE INTERNATIONAL DATES , WHEN TS WILL UPDATE IT'S OPTIONS!
+  // const locale = navigator.language;
+  // console.log(new Intl.DateTimeFormat(locale, {
+  //   year: '2-digit',
+  //   month: 'numeric',
+  //   day: 'numeric',
+  // }).format(new Date(element.dt_txt)));
+
   useEffect(() => {
     const icon = element.weather[0]?.icon
       ? `http://openweathermap.org/img/wn/${element.weather[0]?.icon}@2x.png`
