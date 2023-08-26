@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 import { DeleteModal } from '../Modal/DeleteModal/DeleteModal';
 
-import CardHeader from './CardHeader/CardHeader';
+import { CardHeader } from './CardHeader/CardHeader';
 import styles from './CityWeatherShortInfo.module.css';
 import { ShortInfoList } from './ShortInfoList/ShortInfoList';
 import { ForecastMetaType } from 'types/StateTypes';
@@ -31,12 +31,13 @@ export const CityCurrentWeatherCard: FC<CityWeatherShortInfoPropsType> = memo(
       callback(city);
     };
     const updateCityWeather = () => {
+      console.log('WHY ');
       requestCurrentForecast({ city, initRequest: false });
     };
 
     return (
       <>
-        <NavLink to={`/${city}`} className={styles.link}>
+        <NavLink to={`/${city}`} className={styles.link} data-testid={'navlink'}>
           <div className={styles.card}>
             <CardHeader city={city} setModalActive={setModalActive} />
             <div className={styles.listDiv}>

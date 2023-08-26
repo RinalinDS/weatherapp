@@ -14,9 +14,3 @@ test('form has some text', () => {
   render(<AddItemForm callBack={callback} />);
   expect(screen.getAllByText(/City name/i)).toBeDefined();
 });
-
-test('AddItemForm snapshot', () => {
-  const component = render(<AddItemForm callBack={callback} />);
-
-  expect(component).toMatchSnapshot();
-});

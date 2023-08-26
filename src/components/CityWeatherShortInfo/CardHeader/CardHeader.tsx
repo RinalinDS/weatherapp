@@ -27,5 +27,3 @@ export const CardHeader: FC<CardHeaderPropsType> = ({ setModalActive, city }) =>
     </div>
   );
 };
-
-export default CardHeader;
