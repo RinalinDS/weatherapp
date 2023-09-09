@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import { FC, useState } from 'react';
 
 import { AppBar, Button, styled, Toolbar } from '@mui/material';
 import { useLocation, useNavigate } from 'react-router-dom';

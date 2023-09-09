@@ -31,7 +31,6 @@ export const CityCurrentWeatherCard: FC<CityWeatherShortInfoPropsType> = memo(
       callback(city);
     };
     const updateCityWeather = () => {
-      console.log('WHY ');
       requestCurrentForecast({ city, initRequest: false });
     };
 
