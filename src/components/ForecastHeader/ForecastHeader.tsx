@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import generalStyles from '../../common/styles.module.css';
 import styles from '../../pages/DetailedPage/DetailedPage.module.css';
 import { MetaStateType } from '../../types/StateTypes';

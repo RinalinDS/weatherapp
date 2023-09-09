@@ -1,7 +1,6 @@
 import { CityCurrentWeatherCard } from './CurrentCityWeatherCard';
 import { ForecastMetaType } from '../../types/StateTypes';
 import { render, screen } from 'test-utils/testing-library-utils';
-import React from 'react';
 
 describe('CurrentCityWeatherCard render', () => {
   const callback = jest.fn();
